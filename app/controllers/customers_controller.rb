@@ -26,15 +26,21 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
 
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.save
+      redirect_to root_path, notice: "User created"
+    else
+      render action: 'new'
     end
+
+    # respond_to do |format|
+    #   if @customer.save
+    #     format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+    #     format.json { render :show, status: :created, location: @customer }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @customer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /customers/1
@@ -69,6 +75,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :address, :scope)
+      params.require(:customer).permit(:name, :address, :scope, :email, :password)
     end
 end

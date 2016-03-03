@@ -29,7 +29,7 @@ class ContractorsController < ApplicationController
     if @contractor.save
       redirect_to root_path, notice: "Contractor created"
     else
-      reder action: 'new'
+      render action: 'new'
     end
     # respond_to do |format|
     #   if @contractor.save
