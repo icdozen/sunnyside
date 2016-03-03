@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @search.customer %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @search.address %>
+</p>
+
+<p>
+  <strong>Scope:</strong>
+  <%= @search.scope %>
+</p>
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :searches
+
   root to: 'sessions#new'
 
   # get 'login/new'
