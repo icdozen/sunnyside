@@ -1,10 +1,10 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_logged_in
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Search.all
+    @searches = current_customer.searches.all
   end
 
   # GET /searches/1
@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
 
   # GET /searches/new
   def new
-    @search = Search.new
+    @search = current_customer.searches.new
   end
 
   # GET /searches/1/edit
@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    @search = Search.new(search_params)
+    @search = current_customer.searches.new(search_params)
 
     respond_to do |format|
       if @search.save
@@ -64,7 +64,7 @@ class SearchesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_search
-      @search = Search.find(params[:id])
+      @search = current_customer.searches.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
