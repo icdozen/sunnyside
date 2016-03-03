@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'login/new'
+  root to: 'sessions#new'
 
+  # get 'login/new'
+  resources :sessions
   resources :contractors
 
   # resources :login

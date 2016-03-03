@@ -26,15 +26,20 @@ class ContractorsController < ApplicationController
   def create
     @contractor = Contractor.new(contractor_params)
 
-    respond_to do |format|
-      if @contractor.save
-        format.html { redirect_to @contractor, notice: 'Contractor was successfully created.' }
-        format.json { render :show, status: :created, location: @contractor }
-      else
-        format.html { render :new }
-        format.json { render json: @contractor.errors, status: :unprocessable_entity }
-      end
+    if @contractor.save
+      redirect_to root_path, notice: "Contractor created"
+    else
+      reder action: 'new'
     end
+    # respond_to do |format|
+    #   if @contractor.save
+    #     format.html { redirect_to @contractor, notice: 'Contractor was successfully created.' }
+    #     format.json { render :show, status: :created, location: @contractor }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @contractor.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /contractors/1
@@ -69,6 +74,8 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:name, :address, :scope, :email, :password, :username)
+      params.
+      require(:contractor).
+      permit(:name, :address, :scope, :email, :password)
     end
 end
