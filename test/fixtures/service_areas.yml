@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lat: 1.5
+  long: 1.5
+  scope: MyString
+  radi: 1.5
+
+two:
+  lat: 1.5
+  long: 1.5
+  scope: MyString
+  radi: 1.5

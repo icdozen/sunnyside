@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @service_area.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @service_area.long %>
+</p>
+
+<p>
+  <strong>Scope:</strong>
+  <%= @service_area.scope %>
+</p>
+
+<p>
+  <strong>Radi:</strong>
+  <%= @service_area.radi %>
+</p>
+
+<%= link_to 'Edit', edit_service_area_path(@service_area) %> |
+<%= link_to 'Back', service_areas_path %>
