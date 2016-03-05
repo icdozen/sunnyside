@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -33,13 +32,16 @@
   </div>
   <div>
     <%= f.label :address %><br>
-    <input id="address" type="textbox" value="">
+    <%= f.text_field :address  %>
     <input id="submit" type="button" value="Go Get Me">
   </div>
-  <!-- <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div> -->
+
+    <%= f.text_field :Lat %>
+
+
+    <%= f.text_field :Lng %>
+
+
   <div class="field">
     <%= f.label "Properties Serviced" %><br>
     <%= f.check_box :scope %>
@@ -54,10 +56,6 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-  <div>
-    <% @contractor = Contractor.find(2)%>
-    <%= @contractor.address %>
-  </div>
 
 
 <% end %>
@@ -69,7 +67,8 @@
     <title>Simple markers</title>
     <style>
       html, body {
-        height: 100%;
+        height: 40vw;
+        width: 50vw;
         margin: 0;
         padding: 0;
       }
@@ -82,8 +81,11 @@
     <div id="map"></div>
     <script>
 
+
       function initMap() {
-        var myLatLng = {lat: -25.363, lng: 131.044};
+        var latid = parseFloat(document.getElementById('contractor_Lat').value);
+        var lngid = parseFloat(document.getElementById('contractor_Lng').value);
+        var myLatLng = {lat: latid, lng: lngid};
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
@@ -103,7 +105,7 @@
         });
       }
       function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
+        var address = document.getElementById('contractor_address').value;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
