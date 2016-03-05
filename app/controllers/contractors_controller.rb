@@ -10,6 +10,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/1
   # GET /contractors/1.json
   def show
+    #respond_to JSON include [] what you want to come back
   end
 
   # GET /contractors/new
@@ -76,6 +77,6 @@ class ContractorsController < ApplicationController
     def contractor_params
       params.
       require(:contractor).
-      permit(:name, :address, :scope, :email, :password)
+      permit(:name, :address, :scope, :email, :password, :Lat, :Lng)
     end
 end

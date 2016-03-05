@@ -36,6 +36,15 @@
     <input id="address" type="textbox" value="">
     <input id="submit" type="button" value="Go Get Me">
   </div>
+
+  <div>
+    <%= f.label :Lat %><br>
+    <%= f.text_field :Lat  %>
+  </div>
+  <div>
+    <%= f.label :Lng %><br>
+    <%= f.text_field :Lng  %>
+  </div>
   <!-- <div class="field">
     <%= f.label :address %><br>
     <%= f.text_field :address %>
@@ -55,7 +64,6 @@
     <%= f.submit %>
   </div>
 <% end %>
-
 <html>
   <head>
     <title>Geolocation</title>
@@ -101,9 +109,18 @@
               lng: position.coords.longitude
             };
 
+
             infoWindow.setPosition(pos);
             infoWindow.setContent('Gotcha');
             map.setCenter(pos);
+
+
+          // function populateField (){
+
+            $('#contractor_Lat').val(pos.lat);
+            $('#contractor_Lng').val(pos.lng);
+          // };
+
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -146,9 +163,11 @@
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
       }
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
     </script>
+
   </body>
 </html>
