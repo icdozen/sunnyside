@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+#main {
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background-color: blue;
+  color: white;
+  border: white solid 2px;
+  height: 10vh;
+}
+
+footer {
+  background-color: blue;
+  color: white;
+  border: white solid 2px;
+  height: 10vh;
+}
+
+section {
+  background-color: gray;
+  color: white;
+  border: white solid 2px;
+  order: 1;
+  flex-grow: 1;
+}
+
+nav {
+  background-color: green;
+  color: white;
+  border: white solid 2px;
+  height: 30vh;
+}
+
+aside {
+  background-color: red;
+  color: white;
+  border: white solid 2px;
+  order: 2;
+  height: 30vh;
+}
