@@ -12,6 +12,10 @@ class CustomersController < ApplicationController
   def show
   end
 
+  def search
+    @customer = Contractor.find(params[:id])
+  end
+
   # GET /customers/new
   def new
     @customer = Customer.new
