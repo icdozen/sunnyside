@@ -55,10 +55,16 @@
       // window.setTimeout() to space your markers' animation.
 
       var neighborhoods = [
-        {lat: 52.511, lng: 13.447},
-        {lat: 52.549, lng: 13.422},
-        {lat: 52.497, lng: 13.396},
-        {lat: 52.517, lng: 13.394}
+        {lat: 26.1539716,	lng: -80.1700725},
+        {lat: 26.137129, lng: -80.113431},
+        {lat: 26.0869349	, lng: -80.1442469},
+        {lat: 26.1660706	, lng: -80.1029442},
+        {lat: 26.1677402, lng:	-80.1083216},
+        {lat: 26.180269, lng:	-80.133393},
+        {lat: 26.1802643, lng:	-80.1335778},
+        {lat: 26.1919383, lng:	-80.1571622},
+        {lat: 26.1870068, lng:	-80.1328931},
+        {lat: 26.0849181, lng:	-80.1870155}
       ];
 
       var markers = [];
@@ -67,7 +73,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
-          center: {lat: 52.520, lng: 13.410}
+          center: {lat: 26.1343736, lng: -80.1484297}
         });
       }
 
@@ -100,3 +106,14 @@
     </script>
   </body>
 </html>
+
+
+<% @contractors.each do |mapthis| %>
+  <%= mapthis.name %><br>
+  <%= mapthis.address %><br>
+  <%= mapthis.scope %><br>
+  <%= number_to_phone(mapthis.phone) %><br>
+  <%= mapthis.email %><br>
+  <%= '___________' %><br>
+
+<% end %>
