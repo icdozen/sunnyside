@@ -60,7 +60,7 @@
     <%= f.label :scope, 'Mulifamily', :value => 'Mulifamily' %><br> -->
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Add me or whatever', :id => 'submit_edit' %>
   </div>
 <% end %>
 <html>
@@ -83,7 +83,13 @@
   <body>
 
     <div id="map"></div>
+
+
     <script>
+    $('#contractor_address').on('change', function(){
+      $('#submit_edit').prop('disabled', true);
+    });
+
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
@@ -131,12 +137,13 @@
         var geocoder = new google.maps.Geocoder();
 
         document.getElementById('submit').addEventListener('click', function() {
+          $('#submit_edit').prop('disabled', false);
+
           geocodeAddress(geocoder, map);
         });
       }
       function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-    console.log(address);
+        var address = document.getElementById('contractor_address').value;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
@@ -145,13 +152,16 @@
               map: resultsMap,
               position: results[0].geometry.location
             });
-            // alert(marker["position"]);
+            // alert(marker["position"].lat());
+            $('#contractor_Lat').val(marker["position"].lat());
+            $('#contractor_Lng').val(marker["position"].lng());
+
             window.marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location
             });
           } else {
-            alert('Sorry not able to find you');
+            alert('Sorry not able to find you for the following reason: ' + status);
           }
         });
 
