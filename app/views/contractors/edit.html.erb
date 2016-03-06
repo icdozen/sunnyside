@@ -54,7 +54,7 @@
     <%= f.label :scope, 'Mulifamily', :value => 'Mulifamily' %><br> -->
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Edit me', :id => 'submit_edit' %>
   </div>
 
 
@@ -80,6 +80,11 @@
   <body>
     <div id="map"></div>
     <script>
+    $('#contractor_address').on('change', function(){
+      $('#submit_edit').prop('disabled', true);
+    });
+
+
 
 
       function initMap() {
@@ -100,6 +105,7 @@
 
         var geocoder = new google.maps.Geocoder();
         document.getElementById('submit').addEventListener('click', function() {
+            $('#submit_edit').prop('disabled', false);  
           geocodeAddress(geocoder, map);
           geocodeLatLng(geocoder, map, infowindow);
         });
