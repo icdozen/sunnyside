@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -33,7 +32,7 @@
   </div>
   <div>
     <%= f.label :address %><br>
-    <input id="address" type="textbox" value="">
+    <%= f.text_field :address  %>
     <input id="submit" type="button" value="Go Get Me">
   </div>
 
@@ -92,13 +91,11 @@
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          center: {lat: 26.122439, lng: -80.137317},
+          zoom: 9
         });
+
         var infoWindow = new google.maps.InfoWindow({map: map});
-
-        
-
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -122,6 +119,7 @@
             $('#contractor_Lat').val(pos.lat);
             $('#contractor_Lng').val(pos.lng);
           // };
+          console.log(pos.formatted_address);
 
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -138,6 +136,7 @@
       }
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
+    console.log(address);
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
@@ -152,7 +151,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert('Sorry not able to find you for the following reason: ' + status);
+            alert('Sorry not able to find you');
           }
         });
 

@@ -16,6 +16,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
+  
   end
 
   # GET /contractors/1/edit
