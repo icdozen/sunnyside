@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
   	# 1 degree longitude = cosine (latitude) * 6.172 
   	# 
   	milesLat = 69 * latInput
-  	milesLong = cosine(latInput) * 6.172
+  	milesLong = cosine(latInput) * 69.172
   	return [milesLat, milesLong]
 
   end
