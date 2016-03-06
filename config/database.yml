@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: sunnyside_production
-  username: sunnyside
-  password: <%= ENV['SUNNYSIDE_DATABASE_PASSWORD'] %>
+  # username: sunnyside
+  # password: <%= ENV['SUNNYSIDE_DATABASE_PASSWORD'] %>
