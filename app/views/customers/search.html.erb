@@ -1,4 +1,5 @@
-<h2>Contractor Search</h2>
+<div id='main'>
+<header>Contractor Search</header>
 
 <%= form_for(@customer) do |f| %>
   <% if @customer.errors.any? %>
@@ -28,25 +29,8 @@
   <input id="latlng" type="text" value="">
     <button id="drop" onclick="drop()">Find Me NOW</button>
   </div>
+</div> 
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Marker animations with <code>setTimeout()</code></title>
-    <style>
-      html, body {
-        height: 40vw;
-        width: 50vw;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-
-    </style>
-  </head>
-  <body>
 <div id="map"></div>
     <script>
 
@@ -104,10 +88,8 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
     </script>
-  </body>
-</html>
 
-
+<div id='main'>
 <% @contractors.each do |mapthis| %>
   <%= mapthis.name %><br>
   <%= mapthis.address %><br>
@@ -115,5 +97,5 @@
   <%= number_to_phone(mapthis.phone) %><br>
   <%= mapthis.email %><br>
   <%= '___________' %><br>
-
+</div>
 <% end %>
