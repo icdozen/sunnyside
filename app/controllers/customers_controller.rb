@@ -12,6 +12,9 @@ class CustomersController < ApplicationController
   def show
   end
 
+  def search
+  end
+
   # GET /customers/new
   def new
     @customer = Customer.new

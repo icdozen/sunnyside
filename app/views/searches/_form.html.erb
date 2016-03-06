@@ -19,9 +19,32 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
-  <div class="field">
+  <div>
+    <%= f.label :address %><br>
+    <%= f.text_field :address  %>
+    <input id="submit" type="button" value="Go Get Me">
+  </div>
+
+  <div>
+    <%= f.label :Lat %><br>
+    <%= f.text_field :Lat  %>
+  </div>
+  <div>
+    <%= f.label :Lng %><br>
+    <%= f.text_field :Lng  %>
+  </div>
+  <!-- <div class="field">
     <%= f.label :scope %><br>
     <%= f.text_field :scope %>
+  </div> -->
+  <div class="field">
+    <%= f.label "Property Type" %><br>
+    <%= f.check_box :scope %>
+    <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
+    <%= f.check_box :scope %>
+    <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex' %><br>
+    <%= f.check_box :scope %>
+    <%= f.label :scope, 'Multifamily', :value => 'Multifamily' %><br>
   </div>
   <div class="actions">
     <%= f.submit %>
