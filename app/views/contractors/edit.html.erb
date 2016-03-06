@@ -114,7 +114,10 @@
               map: resultsMap,
               position: results[0].geometry.location
             });
-            // alert(marker["position"]);
+            // alert(marker["position"].lat());
+            $('#contractor_Lat').val(marker["position"].lat());
+            $('#contractor_Lng').val(marker["position"].lng());
+
             window.marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location
@@ -123,6 +126,7 @@
             alert('Sorry not able to find you for the following reason: ' + status);
           }
         });
+
 
 
       }
