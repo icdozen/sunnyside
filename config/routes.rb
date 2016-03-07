@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :searches
 
-  root to: 'sessions#new'
+  root to: 'customers#home'
 
   # get 'login/new'
   resources :sessions
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # Example of regular route:
     # get 'products/:id' => 'catalog#view'
     get 'customers/:id/search' => 'customers#search'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

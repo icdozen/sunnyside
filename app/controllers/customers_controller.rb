@@ -17,6 +17,9 @@ class CustomersController < ApplicationController
     @contractors = Contractor.all
   end
 
+  def home
+    
+  end
   # GET /customers/new
   def new
     @customer = Customer.new
