@@ -1,3 +1,7 @@
+<div id='search-logo'>
+<h2>SunnySide</h2>
+</div>
+
 <div id='main'>
 <header>Contractor Search</header>
 
@@ -15,6 +19,7 @@
   <% end %>
 
 <div class="field">
+  <div id="scope_box">
   <%= f.label "Property Type" %><br>
   <%= f.check_box :scope %>
   <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
@@ -22,6 +27,7 @@
   <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex' %><br>
   <%= f.check_box :scope %>
   <%= f.label :scope, 'Multifamily', :value => 'Multifamily' %><br>
+</div>
 </div>
 
   <% end %>

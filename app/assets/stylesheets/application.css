@@ -13,9 +13,27 @@
  *= require_tree .
  *= require_self
  */
-* {
+/** {
   border-width: 2px;
   border-color: blue;
+  text-align: center;
+}*/
+/*
+div * {
+  position: center;
+}*/
+
+
+#search-logo {
+  margin-left: 6vw;
+}
+
+#scope_box {
+   margin-left: 35vw;
+}
+
+#floating-panel {
+  margin-left: 35vw;
 }
 
 #main {
@@ -26,14 +44,14 @@
 }
 
 header {
-  background-color: #114B5F;
+  background-color: #fe9809;
   color: white;
   border: white solid 2px;
   height: 10vh;
 }
 
 footer {
-  background-color: #fe9809;
+  background-color: #114B5F;
   color: white;
   border: white solid 2px;
   height: 10vh;
@@ -60,4 +78,13 @@ aside {
   border: white solid 2px;
   order: 2;
   height: 30vh;
+}
+
+@media only screen and (max-width: 500px){
+  header {
+    display: none;
+  }
+  #scope_box {
+    margin-left: 0vw;
+  }
 }
