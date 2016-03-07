@@ -24,74 +24,120 @@ div * {
 }*/
 
 
-#search-logo {
-  margin-left: 6vw;
-}
 
-#scope_box {
-   margin-left: 35vw;
-}
-
-#floating-panel {
-  margin-left: 35vw;
-}
-
-#main {
-  display: flex;
-  flex-flow: nowrap;
-  flex-direction: column;
-
-}
 /*#114B5F
 */
-#home-logo {
+
+/* home page css */
+/*.home-logo {
   background-color: #20c063;
-  height: 8vw;
+  height: 5vw;
   color: white;
-}
+}*/
+
+
+/* random body css */
 
 header {
-  background-color: #fe9809;
+  background-color: #20c063;
   color: white;
-  border: white solid 2px;
   height: 10vh;
 }
-
+/*
 footer {
-  background-color: #fe9809;
+  background-color: #474e52;
   color: white;
-  border: white solid 2px;
   height: 30vh;
 }
-
-section {
-  background-color: transparent;
-  color: white;
-  border: white solid 2px;
-  order: 1;
-  flex-grow: 1;
+*/
+#back-pic {
+  height: 50vw;
+  background-image: url('http://i.imgur.com/I9McoXX.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-nav {
-  background-color: transparent;
-  color: white;
-  border: white solid 2px;
-  height: 30vh;
+#head {
+  margin-left: 2vw;
 }
 
-aside {
-  background-color: transparent;
-  color: white;
-  border: white solid 2px;
-  order: 2;
-  height: 30vh;
+#nav-bar li {
+  display: inline;
+  margin: 10px;
+
+
 }
 
-@media only screen and (max-width: 500px){
-  header {
-    display: none;
-  }
-  #scope_box {
-    margin-left: 0vw;
-  }
+#nav-bar ul {
+  text-align: right;
+  margin-right: 10vw;
 }
+
+#contain-back-text ul{
+  padding: 0 0 0 0 ;
+  margin: 0;
+}
+
+ul {
+  
+  list-style-type: none;
+}
+
+/*  SECTIONS  */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+  display: block;
+  float:left;
+  margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+/*  GRID OF SIX  */
+.span_6_of_6 {
+  width: 100%;
+  text-align: center;
+}
+
+.span_5_of_6 {
+    width: 83.06%;
+}
+
+.span_4_of_6 {
+    width: 66.13%;
+}
+
+.span_3_of_6 {
+    width: 49.2%;
+}
+
+.span_2_of_6 {
+    width: 32.26%;
+}
+
+.span_1_of_6 {
+    width: 15.33%;
+}
+.span_1_of_6 li {
+    background-color: #fe9809;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {  margin: 1% 0 1% 0%; }
+  .span_1_of_6, .span_2_of_6, .span_3_of_6, .span_4_of_6, .span_5_of_6, .span_6_of_6 { width: 100%; }
+}
+
+
+
+
