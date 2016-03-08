@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
   <title>Sunnyside</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
+ 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Marker animations with <code>setTimeout()</code></title>
@@ -24,8 +26,23 @@
     </style>
 </head>
 <body>
+  <div class="pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading">sunnySide</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Education</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+    </ul>
+</div>
+
+
 
 <%= yield %>
 
+<div class="footer l-box">
+    <p>
+        <a href="#"></a> Sunnyside<a href='http://unsplash.com/'></a>.
+    </p>
+</div>
 </body>
 </html>
