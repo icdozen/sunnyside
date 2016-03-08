@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   has_many :searches
   
-  def searchResults(latInput, longInput)
+  def self.searchResults(customerIn, contractorsIn)
     #
     # -------------- Overview ----------------------------------------
   	# Linear search the contractor database for contractors 
@@ -17,10 +17,13 @@ class Customer < ActiveRecord::Base
         # 1 degree longitude = cosine (latitude) * 6.172 
 
   	output = []
-  	@contractors.each do |contractor|
-  		output.append(contractor)
+  	contractorsIn.each do |contractor|
+      diffLat = (customerIn.Lat - contractor.Lat).abs
+      diffLng = (customerIn.Lan - contractor.Lng).abs
+      if (diffLat <= 0.5) && (diffLng <= 0.5)
+    		output.append(contractor.name)
+      end
   	end
-  	
   	return output
   end
 

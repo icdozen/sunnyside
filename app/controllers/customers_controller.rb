@@ -1,4 +1,7 @@
 class CustomersController < ApplicationController
+  # --------- NOTE --------------------------------------------
+  # Longitude is in the database as 'Lan'.  Don't ask why
+
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
@@ -13,7 +16,7 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @customer = Contractor.find(params[:id])
+    @customer = Customer.find(params[:id])
     @contractors = Contractor.all
   end
 
@@ -83,6 +86,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :address, :scope, :email, :password)
+      params.require(:customer).permit(:name, :address, :scope, :email, :password, :Lat, :Lan)
     end
 end

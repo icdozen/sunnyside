@@ -3,4 +3,6 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @customer %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Back', customers_path %> |
+
+<%= link_to 'Search', "/customers/#{@customer.id}/search" %>
