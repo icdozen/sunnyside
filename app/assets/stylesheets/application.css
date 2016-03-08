@@ -38,24 +38,42 @@ div * {
 
 /* random body css */
 
-header {
+body {
+  height:200%;
+}
+
+#header {
   background-color: #20c063;
   color: white;
-  height: 10vh;
+  height: 75px;
+  margin: 0;
+  padding: 0;
+    margin-bottom: 0;
+  padding-bottom: 0;
+  width: 100%;
+  border:none;
 }
-/*
+
+#nav-bar {
+  background-color: #20c063;
+}
+
+
+
 footer {
   background-color: #474e52;
   color: white;
-  height: 30vh;
+  height: 20vh;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
-*/
-#back-pic {
-  height: 50vw;
-  background-image: url('http://i.imgur.com/I9McoXX.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+
+
+
+
+
+
 
 #head {
   margin-left: 2vw;
@@ -128,14 +146,13 @@ ul {
 .span_1_of_6 {
     width: 15.33%;
 }
-.span_1_of_6 li {
-    background-color: #fe9809;
-}
+
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
   .col {  margin: 1% 0 1% 0%; }
-  .span_1_of_6, .span_2_of_6, .span_3_of_6, .span_4_of_6, .span_5_of_6, .span_6_of_6 { width: 100%; }
+  .span_1_of_6, .span_2_of_6, .span_3_of_6, .span_4_of_6, .span_5_of_6, .span_6_of_6 { width: 100%;}
+
 }
 
 
