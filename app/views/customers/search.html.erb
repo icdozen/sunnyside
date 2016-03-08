@@ -1,4 +1,4 @@
-<%#= @customer.searchResults(1,1) %>
+<%= Customer.searchResults(@customer, @contractors) %>
 
 <div id='search-logo'>
 <h2>SunnySide</h2>
@@ -39,63 +39,78 @@
   </div>
 </div> 
 
+<div class="hide">
+
+  <div id="customerLat">
+    <%= @customer.Lat %>
+  </div>
+
+  <div id="customerLan">
+    <%= @customer.Lan %>
+  </div>
+
+</div>
+
 <div id="map"></div>
-    <script>
+<script>
 
-      // If you're adding a number of markers, you may want to drop them on the map
-      // consecutively rather than all at once. This example shows how to use
-      // window.setTimeout() to space your markers' animation.
+  // If you're adding a number of markers, you may want to drop them on the map
+  // consecutively rather than all at once. This example shows how to use
+  // window.setTimeout() to space your markers' animation.
 
-      var neighborhoods = [
-        {lat: 26.1539716,	lng: -80.1700725},
-        {lat: 26.137129, lng: -80.113431},
-        {lat: 26.0869349	, lng: -80.1442469},
-        {lat: 26.1660706	, lng: -80.1029442},
-        {lat: 26.1677402, lng:	-80.1083216},
-        {lat: 26.180269, lng:	-80.133393},
-        {lat: 26.1802643, lng:	-80.1335778},
-        {lat: 26.1919383, lng:	-80.1571622},
-        {lat: 26.1870068, lng:	-80.1328931},
-        {lat: 26.0849181, lng:	-80.1870155}
-      ];
+  var customerLat = parseFloat($('#customerLat').text());
+  var customerLan = parseFloat($('#customerLan').text());
 
-      var markers = [];
-      var map;
+  var neighborhoods = [
+    {lat: 26.1539716,	lng: -80.1700725},
+    {lat: 26.137129, lng: -80.113431},
+    {lat: 26.0869349	, lng: -80.1442469},
+    {lat: 26.1660706	, lng: -80.1029442},
+    {lat: 26.1677402, lng:	-80.1083216},
+    {lat: 26.180269, lng:	-80.133393},
+    {lat: 26.1802643, lng:	-80.1335778},
+    {lat: 26.1919383, lng:	-80.1571622},
+    {lat: 26.1870068, lng:	-80.1328931},
+    {lat: 26.0849181, lng:	-80.1870155}
+  ];
 
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: {lat: 26.1343736, lng: -80.1484297}
-        });
-      }
+  var markers = [];
+  var map;
 
-      function drop() {
-        clearMarkers();
-        for (var i = 0; i < neighborhoods.length; i++) {
-          addMarkerWithTimeout(neighborhoods[i], i * 200);
-        }
-      }
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: {lat: customerLat, lng: customerLan}
+    });
+  }
 
-      function addMarkerWithTimeout(position, timeout) {
-        window.setTimeout(function() {
-          markers.push(new google.maps.Marker({
-            position: position,
-            map: map,
-            animation: google.maps.Animation.DROP
-          }));
-        }, timeout);
-      }
+  function drop() {
+    clearMarkers();
+    for (var i = 0; i < neighborhoods.length; i++) {
+      addMarkerWithTimeout(neighborhoods[i], i * 200);
+    }
+  }
 
-      function clearMarkers() {
-        for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(null);
-        }
-        markers = [];
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
-    </script>
+  function addMarkerWithTimeout(position, timeout) {
+    window.setTimeout(function() {
+      markers.push(new google.maps.Marker({
+        position: position,
+        map: map,
+        animation: google.maps.Animation.DROP
+      }));
+    }, timeout);
+  }
+
+  function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
+</script>
 
 <div id='main'>
 <% @contractors.each do |mapthis| %>
