@@ -18,8 +18,8 @@ class CustomersController < ApplicationController
   end
 
   def home
-    
   end
+
   # GET /customers/new
   def new
     @customer = Customer.new
