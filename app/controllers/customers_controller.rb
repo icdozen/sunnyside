@@ -16,7 +16,7 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @customer = Customer.find(params[:id])
+    @customer = Customer.create(name:'',address:'',scope:'Duplex, Triplex, Quadraplex',email:'',username:'',password:'',Lat:26.1,Lan:-80.113431)
     @contractors = Contractor.all
   end
 
