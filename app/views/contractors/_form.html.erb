@@ -79,6 +79,7 @@ $('#contractor_address').on('change', function(){
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 26.122439, lng: -80.137317},
+      scrollwheel: false,
       zoom: 9
     });
 

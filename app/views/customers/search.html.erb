@@ -78,6 +78,7 @@
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
+      scrollwheel: false,
       center: {lat: customerLat, lng: customerLan}
     });
   }
