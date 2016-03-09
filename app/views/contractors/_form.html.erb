@@ -37,18 +37,24 @@
 
    </fieldset>  
 
-  <div>
+
+  <div hidden>
+
     <%= f.label :Lat %><br>
     <%= f.text_field :Lat  %>
   </div>
-  <div>
+  <div hidden>
     <%= f.label :Lng %><br>
     <%= f.text_field :Lng  %>
   </div>
+
   <!-- <div class="field">
+=======
+  <div class="field">
+>>>>>>> 69182348518ffcd802a64fe94247b2260c5b7ddb
     <%= f.label :address %><br>
     <%= f.text_field :address %>
-  </div> -->
+  </div>
   <div class="prop-serviced">
     <strong><%= f.label "Type of Properties Serviced", style:"left:16vw" %></strong><br>
     <%= f.check_box :scope %>
