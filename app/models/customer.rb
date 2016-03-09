@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
     # -------------- Overview ----------------------------------------
   	# Linear search the contractor database for contractors 
     #   within a +/- 0.5 degree lat/long zone.
-  	# These results will be sent to the map. Max search area is ~69 miles
+  	# These results will be sent to the map. Max search area is ~35 miles
     #
     # -------------- Notes ------------------------------------------
       # Linear search is a better choice than Binary here:
@@ -20,7 +20,7 @@ class Customer < ActiveRecord::Base
   	contractorsIn.each do |contractor|
       diffLat = (customerIn.Lat - contractor.Lat).abs
       diffLng = (customerIn.Lan - contractor.Lng).abs
-      if (diffLat <= 0.5) && (diffLng <= 0.5)
+      if (diffLat <= 0.25) && (diffLng <= 0.25)
     		output.append({
           name: contractor.name,
           address: contractor.address,
