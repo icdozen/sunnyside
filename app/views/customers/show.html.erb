@@ -33,7 +33,7 @@
   <% end %>
   <div id="floating-panel">
   <input id="latlng" type="text" value="">
-    <button id="drop" onclick="drop()">Place Markers</button>
+    <button id="drop" onclick="drop()">Search</button>
   </div>
 </div> 
 
@@ -70,9 +70,89 @@
       scrollwheel: false,
       center: {lat: customerLat, lng: customerLan}
     });
+
+    var infoWindow = new google.maps.InfoWindow({map: map});
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        window.pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Gotcha');
+        map.setCenter(pos);
+
+      // function populateField (){
+
+
+        $('#contractor_Lat').val(pos.lat);
+        $('#contractor_Lng').val(pos.lng);
+      // };
+      console.log(pos.formatted_address);
+
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('drop').addEventListener('click', function() {
+      $('#submit_edit').prop('disabled', false);
+
+      geocodeAddress(geocoder, map);
+    });
+
     drop()
   }
 
+  
+  function geocodeAddress(geocoder, resultsMap) {
+    var address = document.getElementById('contractor_address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        resultsMap.setCenter(results[0].geometry.location);
+
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+        // alert(marker["position"].lat());
+        $('#contractor_Lat').val(marker["position"].lat());
+        $('#contractor_Lng').val(marker["position"].lng());
+
+        window.marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Sorry not able to find you for the following reason: ' + status);
+      }
+    });
+
+
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+  }
+
+
+
+
+
+  
   function drop() {
   	neighborhoods = [  ];
   	var latOutput = [];
