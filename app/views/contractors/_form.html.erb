@@ -48,23 +48,16 @@
     <%= f.text_field :Lng  %>
   </div>
 
-  <!-- <div class="field">
-=======
-  <div class="field">
->>>>>>> 69182348518ffcd802a64fe94247b2260c5b7ddb
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
+
   <div class="prop-serviced">
-    <strong><%= f.label "Type of Properties Serviced", style:"left:16vw" %></strong><br>
-    <%= f.check_box :scope %>
+    <strong><%= f.label "Type of Properties Serviced", style:"margin-left:19vw" %></strong><br>
+    <%= f.check_box :scope, style:"margin-left: 19vw" %>
     <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
-    <%= f.check_box :scope %>
+    <%= f.check_box :scope, style:"margin-left: 19vw" %>
     <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex' %><br>
-    <%= f.check_box :scope %>
+    <%= f.check_box :scope, style:"margin-left: 19vw" %>
     <%= f.label :scope, 'Multifamily', :value => 'Multifamily' %><br>
-    <!-- <%= f.radio_button :scope, 'Mulifamily' %>
-    <%= f.label :scope, 'Mulifamily', :value => 'Mulifamily' %><br> -->
+    
   </div>
 
     <%= f.submit 'Add me or whatever', :id => 'submit_edit', class: "pure-button pure-input-1-2 pure-button-primary", style:"margin-left: 16vw" %>

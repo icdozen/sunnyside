@@ -312,6 +312,10 @@ p {
     padding: 10px;
     left:20vw;
 }
+
+.contractor_scope {
+    margin-left: 20vw;
+}
 /*
  * -- TABLET MEDIA QUERIES --
  * On tablets, we want to slightly adjust the size of the banner
