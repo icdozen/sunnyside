@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
     @contractors = Contractor.all
   end
 
-  def search
+  def search # To be deleted
   end
 
   def home

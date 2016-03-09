@@ -33,7 +33,7 @@
   <% end %>
   <div id="floating-panel">
   <input id="latlng" type="text" value="">
-    <button id="drop" onclick="drop()">Find Installers</button>
+    <button id="drop" onclick="drop()">Place Markers</button>
   </div>
 </div> 
 
@@ -66,10 +66,11 @@
 
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
+      zoom: 9,
       scrollwheel: false,
       center: {lat: customerLat, lng: customerLan}
     });
+    drop()
   }
 
   function drop() {
@@ -134,3 +135,4 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
 <% end %>
 </div>
 <br>
+
