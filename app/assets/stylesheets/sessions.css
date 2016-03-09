@@ -1,0 +1,72 @@
+
+
+/*input box center
+*/.meow {
+     margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.pure-form {
+     margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+.pure-menu-horizontal{
+    background-color: #20c063;
+
+}
+
+#customer_password {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    
+}
+
+#customer_password_confirmation {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    
+}
+#customer_name {
+     margin: auto;
+    width: 60%;
+    padding: 10px;
+    
+}
+
+#customer_email {
+    width: 60%;
+    padding: 10px;
+    }
+
+.pure-button,
+.pure-input-1-2,
+.pure-button-primary{
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+
+}
+.pure-group {
+ margin: auto;
+}
+
+.pure-input-1-2 {
+    margin: auto;
+}
+/*.pure-button,
+ .pure-input-1-2, */
+ #submit-button {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    background-color: orange;
+ }
+
+.pure-menu-item {
+  color:black;
+}
