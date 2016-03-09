@@ -253,7 +253,17 @@ margin-top: 0;
         color: #ddd;
     }
     
+.prop-type {
+    color:orange;
+}
 
+.scope_box {
+    background-color:orange;
+}
+
+.index-page {
+    background-color:orange;
+}
 /*
  * -- TABLET MEDIA QUERIES --
  * On tablets, we want to slightly adjust the size of the banner

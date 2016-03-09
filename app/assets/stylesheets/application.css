@@ -291,8 +291,27 @@ p {
         color: #ddd;
     }
 
+.index-page {
+     margin: auto;
+    width: 60%;
+    padding: 10px;
+}
 
+.index-head {
+    text-align: center;
+}
 
+.prop-serviced {
+    text-align: left;
+    left: 16vw;
+}
+
+.login-group {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    left:20vw;
+}
 /*
  * -- TABLET MEDIA QUERIES --
  * On tablets, we want to slightly adjust the size of the banner

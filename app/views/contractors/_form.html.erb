@@ -1,4 +1,4 @@
-<%= form_for(@contractor) do |f| %>
+<%= form_for @contractor, :html => {:class => "pure-form"} do |f| %>
   <% if @contractor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
@@ -10,46 +10,47 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
+
+  <fieldset class="pure-group">
+    <%= f.text_field :name, class: ('pure-input-1-2'), placeholder: "Name",style:"margin-left: 16vw" %>
+  </fieldset>
+  
+  <fieldset class="pure-group">
+    <%= f.text_field :email, class: ('pure-input-1-2'), placeholder: "Email",style:"margin-left: 16vw" %>
+   </fieldset> 
   <!-- <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
   </div> -->
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.label :address %><br>
-    <%= f.text_field :address  %>
-    <input id="submit" type="button" value="Go Get Me">
-  </div>
+  <fieldset class="pure-group">
+    <%= f.password_field :password, class: ('pure-input-1-2'), placeholder: "Password",style:"margin-left: 16vw" %>
+  </fieldset>
+  <fieldset class="pure-group">
+    <%= f.password_field :password_confirmation, class: ('pure-input-1-2'), placeholder: "Password Confirm",style:"margin-left: 16vw" %>
+  </fieldset>
+ 
+   <fieldset class="pure-group">
+    <%= f.text_field :address, class: ('pure-input-1-2'), placeholder: "Address",style:"margin-left: 16vw"  %>
+    
+ 
+    <input id="submit" type="button" value="Go Get Me" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw" >
 
-  <div>
+   </fieldset>  
+
+  <!-- <div>
     <%= f.label :Lat %><br>
     <%= f.text_field :Lat  %>
   </div>
   <div>
     <%= f.label :Lng %><br>
     <%= f.text_field :Lng  %>
-  </div>
+  </div> -->
   <!-- <div class="field">
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div> -->
-  <div class="field">
-    <%= f.label "Properties Serviced" %><br>
+  <div class="prop-serviced">
+    <strong><%= f.label "Type of Properties Serviced", style:"left:16vw" %></strong><br>
     <%= f.check_box :scope %>
     <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
     <%= f.check_box :scope %>
@@ -59,8 +60,8 @@
     <!-- <%= f.radio_button :scope, 'Mulifamily' %>
     <%= f.label :scope, 'Mulifamily', :value => 'Mulifamily' %><br> -->
   </div>
-  <div class="actions">
-    <%= f.submit 'Add me or whatever', :id => 'submit_edit' %>
-  </div>
+
+    <%= f.submit 'Add me or whatever', :id => 'submit_edit', class: "pure-button pure-input-1-2 pure-button-primary", style:"margin-left: 16vw" %>
+
 <% end %>
 
