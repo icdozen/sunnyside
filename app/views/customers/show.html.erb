@@ -33,7 +33,7 @@
   <% end %>
   <div id="floating-panel">
   <input id="latlng" type="text" value="">
-    <button id="drop" onclick="drop()">Find Me NOW</button>
+    <button id="drop" onclick="drop()">Find Installers</button>
   </div>
 </div> 
 
@@ -66,7 +66,7 @@
 
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
+      zoom: 10,
       scrollwheel: false,
       center: {lat: customerLat, lng: customerLan}
     });
@@ -82,13 +82,10 @@
     $(".resultsLng").each(function(){
     	lngOutput.push(parseFloat($(this).html()))
     });
-    console.log(latOutput);
-    console.log(lngOutput);
     for (var x = 0; x < latOutput.length; x++) {
     neighborhoods.push({lat: latOutput[x],	lng: lngOutput[x]});
     }
     clearMarkers()
-    console.log(neighborhoods);
     for (var i = 0; i < neighborhoods.length; i++) {
       addMarkerWithTimeout(neighborhoods[i], i * 200);
     }
