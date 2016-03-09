@@ -13,11 +13,11 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @customer = Customer.find(params[:id])
+    @contractors = Contractor.all
   end
 
   def search
-    @customer = Customer.create(name:'',address:'',scope:'Duplex, Triplex, Quadraplex',email:'',username:'',password:'',Lat:26.1,Lan:-80.113431)
-    @contractors = Contractor.all
   end
 
   def home

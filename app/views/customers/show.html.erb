@@ -1,20 +1,139 @@
-<p id="notice"><%= notice %></p>
+<div id='search-logo'>
+<h2>SunnySide</h2>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+<div id='main'>
+<header>Contractor Search</header>
 
-<p>
-  <strong>Address:</strong>
-  <%= @customer.address %>
-</p>
+<%= form_for(@customer) do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this contractor from being saved:</h2>
 
-<p>
-  <strong>Scope:</strong>
-  <%= @customer.scope %>
-</p>
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %> |
-<%= link_to 'Search', "/customers/#{@customer.id}/search" %>
+<div class="field">
+  <div id="scope_box">
+  <%= f.label "Property Type" %><br>
+  <%= f.check_box :scope %>
+  <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
+  <%= f.check_box :scope %>
+  <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex' %><br>
+  <%= f.check_box :scope %>
+  <%= f.label :scope, 'Multifamily', :value => 'Multifamily' %><br>
+</div>
+</div>
+
+  <% end %>
+  <div id="floating-panel">
+  <input id="latlng" type="text" value="">
+    <button id="drop" onclick="drop()">Find Me NOW</button>
+  </div>
+</div> 
+
+<div hidden>
+
+  <div id="customerLat">
+    <%= @customer.Lat %>
+  </div>
+
+  <div id="customerLan">
+    <%= @customer.Lan %>
+  </div>
+
+</div>
+
+<div id="map"></div>
+<script>
+
+  // If you're adding a number of markers, you may want to drop them on the map
+  // consecutively rather than all at once. This example shows how to use
+  // window.setTimeout() to space your markers' animation.
+
+  var customerLat = parseFloat($('#customerLat').text());
+  var customerLan = parseFloat($('#customerLan').text());
+
+  var neighborhoods = [  ];
+
+  var markers = [];
+  var map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      scrollwheel: false,
+      center: {lat: customerLat, lng: customerLan}
+    });
+  }
+
+  function drop() {
+  	neighborhoods = [  ];
+  	var latOutput = [];
+  	var lngOutput = [];
+    $(".resultsLat").each(function(){
+    	latOutput.push(parseFloat($(this).html()))
+    });
+    $(".resultsLng").each(function(){
+    	lngOutput.push(parseFloat($(this).html()))
+    });
+    console.log(latOutput);
+    console.log(lngOutput);
+    for (var x = 0; x < latOutput.length; x++) {
+    neighborhoods.push({lat: latOutput[x],	lng: lngOutput[x]});
+    }
+    clearMarkers()
+    console.log(neighborhoods);
+    for (var i = 0; i < neighborhoods.length; i++) {
+      addMarkerWithTimeout(neighborhoods[i], i * 200);
+    }
+  }
+
+  function addMarkerWithTimeout(position, timeout) {
+    window.setTimeout(function() {
+      markers.push(new google.maps.Marker({
+        position: position,
+        map: map,
+        animation: google.maps.Animation.DROP
+      }));
+    }, timeout);
+  }
+
+  function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
+</script>
+
+<% results = Customer.searchResults(@customer, @contractors) %>
+
+<div id='main'>
+<br>
+<h3>Nearby Solar Installers</h3>
+<% results.each do |mapthis| %>
+  <%= '___________' %><br>
+  <%= mapthis[:name] %><br>
+  <%= mapthis[:address] %><br>
+  <%= mapthis[:scope] %><br>
+  <%= number_to_phone(mapthis[:phone]) %><br>
+  <%= mapthis[:email] %><br>
+  <div class="resultsLat" hidden>
+    <%= mapthis[:Lat] %>
+  </div>
+  <div class="resultsLng" hidden>
+    <%= mapthis[:Lng] %>
+  </div>
+<% end %>
+</div>
+<br>
