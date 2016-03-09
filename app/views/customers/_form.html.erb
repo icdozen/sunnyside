@@ -1,6 +1,5 @@
 
 
-
 <%= form_for @customer, :html => {:class => "pure-form"} do |f| %>
 <% if @customer.errors.any? %>
   <div id="error_explanation">
@@ -14,18 +13,19 @@
   </div>
 <% end %>
 
+
  
 <!-- <div class="field">
  <%#= f.label :name, class: ('pure-input-1-2') %><br>
   <input type="text" class="pure-input-1-2" placeholder="Username">
  --> 
 <fieldset class="pure-group">
-  <%= f.text_field :name, class: ('pure-input-1-2'), placeholder: "Username" %>
+  <%= f.text_field :name, class: ('pure-input-1-2'), placeholder: "Username",style:"margin-left: 12vw" %>
 
   </fieldset>
 
 <fieldset class="pure-group">
-  <%= f.text_field :email, class: ('pure-input-1-2'), placeholder: "Email" %>
+  <%= f.text_field :email, class: ('pure-input-1-2'), placeholder: "Email",style:"margin-left: 12vw" %>
  </fieldset>
 
 <!-- <div class="field">
@@ -34,11 +34,11 @@
 </div> -->
 
 <fieldset class="pure-group">
-  <%= f.password_field :password, class: ('pure-input-1-2'), placeholder: "Password" %>
+  <%= f.password_field :password, class: ('pure-input-1-2'), placeholder: "Password",style:"margin-left: 12vw" %>
  </fieldset>
 
 <fieldset class="pure-group">
-  <%= f.password_field :password_confirmation, class: ('pure-input-1-2'), placeholder: "Password Confirmation" %>
+  <%= f.password_field :password_confirmation, class: ('pure-input-1-2'), placeholder: "Password Confirmation",style:"margin-left: 12vw" %>
  </fieldset>
 
 <!-- <fieldset class="pure-group">
@@ -49,7 +49,8 @@
  </fieldset> -->
 
 
-  <%= f.submit class: "pure-button pure-input-1-2 pure-button-primary" %>
+  <%= f.submit class: "pure-button pure-input-1-2 pure-button-primary", id:"submit-button", style:"margin-left: 12vw" %>
 
 
 <% end %>
+</div>
