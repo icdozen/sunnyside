@@ -21,7 +21,15 @@ class Customer < ActiveRecord::Base
       diffLat = (customerIn.Lat - contractor.Lat).abs
       diffLng = (customerIn.Lan - contractor.Lng).abs
       if (diffLat <= 0.5) && (diffLng <= 0.5)
-    		output.append(contractor.name)
+    		output.append({
+          name: contractor.name,
+          address: contractor.address,
+          scope: contractor.scope,
+          phone: contractor.phone,
+          email: contractor.email,
+          Lat: contractor.Lat,
+          Lng: contractor.Lng
+        })
       end
   	end
   	return output

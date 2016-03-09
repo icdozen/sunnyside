@@ -1,5 +1,3 @@
-<%= Customer.searchResults(@customer, @contractors) %>
-
 <div id='search-logo'>
 <h2>SunnySide</h2>
 </div>
@@ -107,18 +105,44 @@
     }
     markers = [];
   }
+
+
+  // window.onload = function($(".resultsLat").each(function(index){
+  //   console.log( "tesst")
+  // }))
+
+  window.onload = function(){
+    $(".resultsLat").each(function(){
+      console.log(parseFloat($(this).html()))
+    })
+    $(".resultsLng").each(function(){
+      console.log(parseFloat($(this).html()))
+    })    
+  }
+
 </script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
 </script>
 
+<% results = Customer.searchResults(@customer, @contractors) %>
+
 <div id='main'>
-<% @contractors.each do |mapthis| %>
-  <%= mapthis.name %><br>
-  <%= mapthis.address %><br>
-  <%= mapthis.scope %><br>
-  <%= number_to_phone(mapthis.phone) %><br>
-  <%= mapthis.email %><br>
+<br>
+<h3>Nearby Solar Installers</h3>
+<% results.each do |mapthis| %>
   <%= '___________' %><br>
-</div>
+  <%= mapthis[:name] %><br>
+  <%= mapthis[:address] %><br>
+  <%= mapthis[:scope] %><br>
+  <%= number_to_phone(mapthis[:phone]) %><br>
+  <%= mapthis[:email] %><br>
+  <div class="resultsLat">
+    <%= mapthis[:Lat] %>
+  </div>
+  <div class="resultsLng">
+    <%= mapthis[:Lng] %>
+  </div>
 <% end %>
+</div>
+<br>
