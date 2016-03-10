@@ -35,11 +35,9 @@ $('#contractor_address').on('change', function(){
           lng: position.coords.longitude
         };
 
-
         infoWindow.setPosition(pos);
         infoWindow.setContent('Gotcha');
         map.setCenter(pos);
-
 
       // function populateField (){
 
@@ -63,6 +61,8 @@ $('#contractor_address').on('change', function(){
       geocodeAddress(geocoder, map);
     });
   }
+
+  
   function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('contractor_address').value;
     geocoder.geocode({'address': address}, function(results, status) {

@@ -20,7 +20,7 @@ class Customer < ActiveRecord::Base
   	contractorsIn.each do |contractor|
       diffLat = (customerIn.Lat - contractor.Lat).abs
       diffLng = (customerIn.Lan - contractor.Lng).abs
-      if (diffLat <= 0.5) && (diffLng <= 0.5)
+      if (diffLat <= 0.37) && (diffLng <= 0.37) # radius ~50 miles
     		output.append({
           name: contractor.name,
           address: contractor.address,
