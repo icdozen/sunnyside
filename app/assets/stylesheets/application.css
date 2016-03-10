@@ -29,6 +29,7 @@
  */
 body {
     color: #526066;
+    min-height: 80vh;
 }
 
 h2, h3 {
@@ -282,6 +283,7 @@ p {
     font-weight: 500;
 }
 
+
 .footer {
     background: #111;
     color: #888;
@@ -316,6 +318,9 @@ p {
 .contractor_scope {
     margin-left: 20vw;
 }
+
+
+
 /*
  * -- TABLET MEDIA QUERIES --
  * On tablets, we want to slightly adjust the size of the banner

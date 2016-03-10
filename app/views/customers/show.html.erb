@@ -1,7 +1,8 @@
 
 <!-- <div id='main'> -->
-<header>Contractor Search</header>
-
+<div class="new-developer">
+<h1>Find Your Contractor</h1>
+</div>
 <%= form_for@customer ,:html => {:class => "pure-form"} do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
@@ -15,30 +16,24 @@
     </div>
   <% end %>
 
- <label for="option-one" class="pure-checkbox">
-        <input id="option-one" type="checkbox" value="">
-        Here's option one.
-    </label>
-</div>
-
 
 <form class="pure-form">
   <div id="scope_box" style="margin:auto">
-  <h4><%= f.label "Property Type", style:"color:orange", id:"box-check" %></h4>
-  <%= f.check_box :scope %>
+  <h4><%= f.label "Property Type", id:"box-check",style:"margin-left:19vw" %></h4>
+  <%= f.check_box :scope, style:"margin-left:19vw" %>
   <%= f.label :scope, 'Single Family', :value => 'Single Family',id:"box-check" %> <br>
-  <%= f.check_box :scope %>
+  <%= f.check_box :scope, style:"margin-left:19vw" %>
   <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex',id:"box-check" %><br>
-  <%= f.check_box :scope %>
+  <%= f.check_box :scope, style:"margin-left:19vw" %>
   <%= f.label :scope, 'Multifamily', :value => 'Multifamily',id:"box-check" %><br>
 </div>
 </div>
   <% end %>
 
-<form class="pure-form">
+<form class="pure-form" >
 
-  <input id="latlng" type="text" value="" style="margin-left: 9vw" ><br>
-    <button id="drop" onclick="drop()" class="pure-button">Find Me NOW</button>
+  <input id="latlng" type="text" placeholder="Address" ><br>
+    <button id="drop" onclick="drop()" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Me NOW</button>
 <!--     <input type="text" class="pure-input-rounded">
     <button type="submit" Search</button> -->
 </form>
