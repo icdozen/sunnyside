@@ -30,7 +30,6 @@
 </div>
   <% end %>
 
-<form class="pure-form" >
 
   <input id="latlng" type="text" placeholder="Address" ><br>
     <button id="drop" onclick="drop()" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Me NOW</button>
@@ -148,7 +147,6 @@
           map: resultsMap,
           position: results[0].geometry.location
         });
-        console.log(123123123)
       } else {
         alert('Sorry not able to find you for the following reason: ' + status);
       }
