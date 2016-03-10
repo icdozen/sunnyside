@@ -34,6 +34,6 @@ gem 'bcrypt', '~> 3.1.7'
 #gem "paperclip", "~> 4.3.5"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'ratyrate'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
