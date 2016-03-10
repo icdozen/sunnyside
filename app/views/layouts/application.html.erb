@@ -8,6 +8,45 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
  
+<!-- /*========================this is the new css file for responsive menu===============
+*/
+ -->
+<div class="custom-menu-wrapper">
+    <div class="pure-menu custom-menu custom-menu-top">
+        <a href="/" class="pure-menu-heading custom-menu-brand">SunnySide</a>
+        <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+    </div>
+    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
+        <div class="custom-menu-screen"></div>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/customers/1" class="pure-menu-link">Search</a></li>
+            <li class="pure-menu-item"><a href="/about-us" class="pure-menu-link">About</a></li>
+            <li class="pure-menu-item"><a href="/education" class="pure-menu-link">Why Solar?</a></li>
+            <li class="pure-menu-item"><a href="/sessions/new" class="pure-menu-link">Login</a></li>
+<!--             <li class="pure-menu-item"><a href="/" class="pure-menu-link">GitHub</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Apple</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Google</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Wang</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Yahoo</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">W3C</a></li>
+ -->        </ul>
+    </div>
+</div>
+<script>
+(function (window, document) {
+document.getElementById('toggle').addEventListener('click', function (e) {
+    document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
+    document.getElementById('toggle').classList.toggle('x');
+});
+})(this, this.document);
+</script>
+
+
+
+
+<!-- ===================================end of responsive menu=============================
+ -->
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Marker animations with <code>setTimeout()</code></title>
@@ -15,6 +54,7 @@
     <style>
       html, body {
         height: 40vw;
+
         width: auto;
         margin: 0;
         padding: 0;
@@ -26,17 +66,17 @@
     </style>
 </head>
 <body>
-  <div class="pure-menu pure-menu-horizontal">
+  <!-- <div class="pure-menu pure-menu-horizontal">
     <a href="/" class="pure-menu-heading pure-menu-link", style="color: white">sunnySide</a>
     <ul class="pure-menu-list">
 
-        <li class="pure-menu-item"><a href="/customers/1" class="pure-menu-link", style="color: black">Search</a></li>
+        <li class="pure-menu-item"><a href="/customers/1" class="pure-menu-link", style="color: black; margin-left: 55vw"">Search</a></li>
         <li class="pure-menu-item"><a href="/sessions/new" class="pure-menu-link", style="color: black">Login</a></li>
         <li class="pure-menu-item"><a href="/education" class="pure-menu-link", style="color: black">Why Solar?</a></li>
         <li class="pure-menu-item"><a href="/about-us" class="pure-menu-link", style="color: black">About</a></li>
 
     </ul>
-</div>
+</div> -->
 
 <%= yield %>
 
@@ -45,7 +85,7 @@
 
 
 <footer>
-<div class="footer l-box">
+<div class="footer">
     <p>
         <a href="#"></a> Sunnyside<a href='http://unsplash.com/'></a>.
     </p>
