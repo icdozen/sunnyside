@@ -188,9 +188,12 @@
  * -- Pure CSS Pricing style --
  * Most of these are inherited from Base, but I want to change a few.
  */
+/*/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
 body {
     color: #526066;
-    min-height: 80vh;
 }
 
 h2, h3 {
@@ -202,15 +205,23 @@ h2, h3 {
 p {
     line-height: 1.6em;
 }
-.footer { 
-    position: ; bottom: 0; width: 100%; 
-}
-.new-developer {
-    text-align: center;
-}
+
+
 /*
  * -- Layout Styles --
  */
+
+ .new-developer {
+    text-align: center;
+}
+
+.pure-form {
+     margin: auto;
+    width: 60%;
+    
+    padding: 10px;
+}
+
 .l-content {
     margin: 0 auto;
 }
@@ -223,81 +234,11 @@ p {
  * -- MENU STYLES --
  * Make the menu have a very faint box-shadow.
  */
-/*.pure-menu {
+.pure-menu {
     box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-     color:black;
-}*/
-
-/*input box center
-*/.meow {
-     margin: auto;
-    width: 60%;
-    padding: 10px;
 }
 
-.pure-form {
-     margin: auto;
-    width: 60%;
-    
-    padding: 10px;
-}
-/*.pure-menu-horizontal{
-    background-color: #20c063;
 
-}*/
-
-#customer_password {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-    
-}
-
-#customer_password_confirmation {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-    
-}
-#customer_name {
-     margin: auto;
-    width: 60%;
-    padding: 10px;
-    
-}
-
-#customer_email {
-    width: 60%;
-    padding: 10px;
-    }
-
-.pure-button,
-.pure-input-1-2,
-.pure-button-primary{
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-
-}
-.pure-group {
- margin: auto;
-}
-
-.pure-input-1-2 {
-    margin: auto;
-}
-/*.pure-button,
- .pure-input-1-2, */
- #submit-button {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-    background-color: orange;
- }
-
-.pure-menu-item {
-  color:black;
-}
 /*
  * -- BANNER --
  * The top banner with the headings. By using a combination
@@ -306,7 +247,7 @@ p {
  */
 
 .banner {
-    background: transparent url('http://i.imgur.com/I9McoXX.jpg') 0 0 no-repeat fixed;
+    background: transparent url('http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg') 0 0 no-repeat fixed;
     text-align: center;
     background-size: cover;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg', sizingMethod='scale');
@@ -446,7 +387,6 @@ p {
     font-weight: 500;
 }
 
-
 .footer {
     background: #111;
     color: #888;
@@ -456,52 +396,12 @@ p {
         color: #ddd;
     }
 
-.index-page {
-     margin: auto;
-    width: 60%;
-    padding: 10px;
-}
-
-.index-head {
-    text-align: center;
-}
-
-.prop-serviced {
-    text-align: left;
-    left: 16vw;
-}
-
-.login-group {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-    left:20vw;
-}
-
-.contractor_scope {
-    margin-left: 20vw;
-}
-
 .pure-img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-.mad-size1 {
-    width: 500px;
-    vertical-align: top;
-}
-
-.mad-size2 {
-    display:inline-block;
-    width:100px;
-    vertical-align:top;
-}
-
-.map {
-    width: 400px;
-}
 /*
  * -- TABLET MEDIA QUERIES --
  * On tablets, we want to slightly adjust the size of the banner
@@ -530,3 +430,7 @@ p {
         font-size: 3em;
     }
 }
+*/
+
+
+
