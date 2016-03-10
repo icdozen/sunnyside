@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
     else
       render action: 'new'
+    end
   end
-end
 
 end

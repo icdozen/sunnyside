@@ -216,13 +216,17 @@ p {
     background: #111;
     color: #888;
     text-align: center;
-    
+
 }
     .footer a {
         color: #ddd;
     }
 
-
+    .formatted {
+        display: flex;
+        justify-content: space-around;
+        width: 55%;
+    }
 
 /*
  * -- TABLET MEDIA QUERIES --
@@ -251,4 +255,12 @@ p {
     .banner-head {
         font-size: 3em;
     }
+}
+
+.pics {
+  max-height: 100%:
+  height: auto;
+  text-align: center;
+  margin-left: 40px;
+  margin-top: 20px;
 }
