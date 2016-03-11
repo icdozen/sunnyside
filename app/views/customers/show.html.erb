@@ -234,8 +234,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
 </tbody>
 </table>
 
-<% search = false %>
-<% if (@customer.id != 1) || (search == true) %>
+<% search = true %>
 	<h3>Nearby Solar Installers</h3>
 	<% results.each do |mapthis| %>
 	  <%= '___________' %><br>
@@ -251,13 +250,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
 	    <%= mapthis[:Lng] %>
 	  </div>
 	<% end %>
-<% end %>
 
 </div>
 <!-- </div> -->
 <br>
 
-</div>
 
 
 
