@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Customer.create(name:'testCustomer',address:'testAddress',scope:'Duplex, Triplex, Quadraplex',email:'test@example.com',username:'exampleUser',password:'asdf',Lat:26.65,Lan:-80.113431)
+Customer.create(name:'testCustomer',address:'Boca Raton, FL',scope:'Duplex, Triplex, Quadraplex',email:'test@example.com',username:'exampleUser',password:'asdf',Lat:26.65,Lan:-80.113431)
 Customer.create(name:'testCustomer2',address:'testAddress',scope:'Duplex, Triplex, Quadraplex',email:'test@example.com',username:'exampleUser',password:'asdf',Lat:26.6,Lan:-80.113431)
 
   Contractor.create(name:'Advanced Green Technologies' , scope:'Duplex, Triplex, Quadraplex',email:'agreentech@sunnyside.com', Lat: 26.6035, Lng: -80.16531, phone: 9546587634 ,password:'a', address: '2100 NW 21st Ave, Fort Lauderdale, FL 33311')

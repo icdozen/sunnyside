@@ -3,7 +3,7 @@
 <div class="new-developer">
 <h1>Find Your Contractor</h1>
 </div>
-<%= form_for@customer ,:html => {:class => "pure-form"} do |f| %>
+<%= form_for @customer, :html => {:class => "pure-form"} do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this contractor from being saved:</h2>
@@ -164,7 +164,6 @@
 //-------------------------------------------
 
   function drop() {
-    $.ajax("/customers/1/show");
   	neighborhoods = [];
   	var latOutput = [];
   	var lngOutput = [];
@@ -234,6 +233,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
  <% end %>
 </tbody>
 </table>
+
+<div id="customerLat" hidden>
+  <%= @customer.Lat %>
+</div>
+<div id="customerLan" hidden>
+  <%= @customer.Lan %>
+</div>
 
 <% search = true %>
 	<h3>Nearby Solar Installers</h3>
