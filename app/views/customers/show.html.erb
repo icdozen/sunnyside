@@ -31,7 +31,7 @@
 
 
   <input id="latlng" type="text" placeholder="Address" ><br>
-    <button id="drop" onclick="drop()" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Me NOW</button>
+    <button id="drop" onclick="" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Me NOW</button>
 <!--     <input type="text" class="pure-input-rounded">
     <button type="submit" Search</button> -->
 </form>
@@ -48,7 +48,7 @@
   </div>
 </div> 
  -->
-<div hidden>
+<div>
 
   <div id="customerLat">
     <%= @customer.Lat %>
@@ -56,6 +56,14 @@
 
   <div id="customerLan">
     <%= @customer.Lan %>
+  </div>
+
+  <div id="contractorLats">
+    <%=  Customer.contractorLats(@contractors)%>
+  </div>
+
+  <div id="contractorLngs">
+    <%=  Customer.contractorLngs(@contractors)%>
   </div>
 
 </div>
@@ -119,9 +127,10 @@
     var geocoder = new google.maps.Geocoder();
 
     document.getElementById('drop').addEventListener('click', function() {
-      $('#submit_edit').prop('disabled', false);
 
       geocodeAddress(geocoder, map);
+      $.ajax("/customers/1");
+      drop();
     });
  
     // drop()
@@ -135,18 +144,15 @@
       if (status === google.maps.GeocoderStatus.OK) {
         resultsMap.setCenter(results[0].geometry.location);
 
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-        // alert(marker["position"].lat());
-        $('#customerLat').val(marker["position"].lat());
-        $('#customerLan').val(marker["position"].lng());
+        console.log(results[0].geometry.location.lat());
+        console.log(results[0].geometry.location.lng());
 
-        window.marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
+        var customerLatUpdate = results[0].geometry.location.lat();
+        var customerLngUpdate = results[0].geometry.location.lng();
+
+        $('#customerLat').val(customerLatUpdate);
+        $('#customerLan').val(customerLngUpdate);
+
       } else {
         alert('Sorry not able to find you for the following reason: ' + status);
       }
@@ -164,7 +170,20 @@
 
 //-------------------------------------------
 
+  // function calcDist() {
+  //   var latsList = $("#contractorLats").html();
+  //   latsList2 = latsList.split(",");
+  //   var output = [];
+  //   console.log(latsList2);
+  //   latsList2.forEach(function(callback, thisArg){
+  //     console.log(thisArg);
+  //   });
+  // }
+
   function drop() {
+    calcDist();
+    // location.reload();
+    deleteMarkers();  
   	neighborhoods = [];
   	var latOutput = [];
   	var lngOutput = [];
@@ -177,7 +196,6 @@
     for (var x = 0; x < latOutput.length; x++) {
     neighborhoods.push({lat: latOutput[x],	lng: lngOutput[x]});
     }
-    clearMarkers()
     for (var i = 0; i < neighborhoods.length; i++) {
       addMarkerWithTimeout(neighborhoods[i], i * 200);
     }
@@ -191,6 +209,11 @@
         animation: google.maps.Animation.DROP
       }));
     }, timeout);
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
   }
 
   function clearMarkers() {

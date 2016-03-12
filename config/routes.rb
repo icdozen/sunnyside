@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # resources :login
 
   resources :customers do
-    get :show, on: :member     
+    get :searchResults, on: :member     
   end
 
   resources :service_areas
