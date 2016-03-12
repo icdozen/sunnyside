@@ -19,8 +19,8 @@
 
 <form class="pure-form">
   <div id="scope_box" style="margin:auto">
-  <h4><%= f.label "Property Type", id:"box-check",style:"margin-left:19vw" %></h4>
-  <%= f.check_box :scope, style:"margin-left:19vw" %>
+  <h4><%= f.label "Property Type", id:"box-check",style:"margin-left:0" %></h4>
+  <%= f.check_box :scope, style:"margin-left:0" %>
   <%= f.label :scope, 'Single Family', :value => 'Single Family',id:"box-check" %> <br>
   <%= f.check_box :scope, style:"margin-left:19vw" %>
   <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex',id:"box-check" %><br>
@@ -95,9 +95,10 @@
           lng: position.coords.longitude
         };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Hi !');
+        // infoWindow.setPosition(pos);
+        // infoWindow.setContent('Hi !');
         map.setCenter(pos);
+        drop()
 
       // function populateField (){
 
@@ -122,8 +123,8 @@
 
       geocodeAddress(geocoder, map);
     });
-
-    drop()
+ 
+    // drop()
   }
 
 //-----------------------

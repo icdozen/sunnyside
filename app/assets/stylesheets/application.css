@@ -341,11 +341,22 @@ p {
  * -- PHONE MEDIA QUERIES --
  * On phones, we want to reduce the height and font-size of the banner further
  */
-@media (min-width: 480px) {
+ 
+/*this applies when the screen size goes above 440px
+*/
+@media (min-width: 440px) {
     .banner {
         height: 400px;
     }
     .banner-head {
         font-size: 3em;
     }
+    #map {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    body {
+        background-color: black;
+    }
+    
 }
