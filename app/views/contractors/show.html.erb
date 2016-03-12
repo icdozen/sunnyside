@@ -1,30 +1,48 @@
 <p id="notice"><%= notice %></p>
 
+<div class="l-content">
+    <div class="pricing-tables pure-g">
+        <div class="pure-u-1 pure-u-md-1-3">
+            
+                <div class="pricing-table-header">
+                    <h2></h2>
+
+                    <span class="pricing-table-price">
+                        <img src="http://i.imgur.com/rgkBKwj.png" class="pure-img"> <span>Rating: B</span>
+                    </span>
+                </div>
+
+
 <p>
-  <strong>Name:</strong>
+  <strong>Name:</strong><br>
   <%= @contractor.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Address:</strong><br>
   <%= @contractor.address %>
 </p>
 
 <p>
-  <strong>Scope:</strong>
+  <strong>Scope:</strong><br>
   <%= @contractor.scope %>
 </p>
 
 <p>
-	<strong>Phone Number:</strong>
-	tel_to <a href="tel:561-310-9933">561-310-9933</a>
+  <strong>Email:</strong><br>
+  <%= @contractor.email %>
 </p>
 
 <p>
+  <strong>Phone:</strong><br>
+  tel_to <a href="tel:561-310-9933"><%= number_to_phone(@contractor.phone) %></a>
+</p>
+<!-- <p>
+  
   <strong>Lat & Lng:</strong>
 <%= @contractor.Lat %>
 <%= @contractor.Lng %>
-</p>
+</p> -->
 
 <%= link_to 'Edit', edit_contractor_path(@contractor) %> |
 <%= link_to 'Back', contractors_path %>
