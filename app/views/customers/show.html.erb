@@ -17,24 +17,26 @@
   <% end %>
 
 
-<form class="pure-form">
-  <div id="scope_box" style="margin:auto">
-  <h4><%= f.label "Property Type", id:"box-check",style:"margin-left:0" %></h4>
-  <%= f.check_box :scope, style:"margin-left:0" %>
-  <%= f.label :scope, 'Single Family', :value => 'Single Family',id:"box-check" %> <br>
-  <%= f.check_box :scope, style:"margin-left:19vw" %>
-  <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex',id:"box-check" %><br>
-  <%= f.check_box :scope, style:"margin-left:19vw" %>
-  <%= f.label :scope, 'Multifamily', :value => 'Multifamily',id:"box-check" %><br>
+<form class="pure-form pure-form-stacked">
+<!--   <div id="scope_box" style="margin:auto">
+ -->  <h3><label for="scope">Property Type</label></h3>
+        <select id="scope">
+            <option></option>
+            <option>Single Family</option>
+            <option>Duplex, Triplex, Quadraplex</option>
+            <option>Multifamily</option>
+        </select>
+
 </div>
   <% end %>
-
-
-  <input id="latlng" type="text" placeholder="Address" ><br>
-    <button id="drop" onclick="drop()" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Me NOW</button>
-<!--     <input type="text" class="pure-input-rounded">
-    <button type="submit" Search</button> -->
 </form>
+
+
+  <input id="latlng" type="text" placeholder="Address" style="margin-left: 77px;height: 37px;width: 220px;"><br>
+  <fieldset>
+    <button id="drop" onclick="drop()" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Contractor</button>
+</fieldset>
+
 
 
  <!--  <div id="floating-panel">
@@ -216,20 +218,17 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
     <thead>
         <tr>
             <th>Name</th>
-            <th>Address</th>
-            <th>Scope</th>
-            <th>Phone</th>
-            <th>email</th>
+           
+            
+            <th>Contact</th>
+            
         </tr>
    </thead>
     <tbody>
         <tr>
         <% results.each do |mapthis| %>
         <td><%= mapthis[:name] %></td>
-        <td><%= mapthis[:address] %></td>
-        <td><%= mapthis[:scope] %></td>
         <td><%= number_to_phone(mapthis[:phone]) %> </td>
-        <td><%= mapthis[:email] %></td>
       </tr>
  <% end %>
 </tbody>
@@ -243,14 +242,8 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
 </div>
 
 <% search = true %>
-	<h3>Nearby Solar Installers</h3>
 	<% results.each do |mapthis| %>
-	  <%= '___________' %><br>
-	  <%= mapthis[:name] %><br>
-	  <%= mapthis[:address] %><br>
-	  <%= mapthis[:scope] %><br>
-	  <%= number_to_phone(mapthis[:phone]) %><br>
-	  <%= mapthis[:email] %><br>
+
 	  <div class="resultsLat" hidden>
 	    <%= mapthis[:Lat] %>
 	  </div>
