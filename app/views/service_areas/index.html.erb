@@ -1,5 +1,4 @@
-<%= @client %>
-<%= @tweetOutput %>
+
 
 
 <h1>Listing service_areas</h1>
@@ -7,24 +6,24 @@
 <table>
   <thead>
     <tr>
-      <th>Lat</th>
-      <th>Long</th>
-      <th>Scope</th>
-      <th>Radi</th>
+      <th>Tweet</th>
+      <th>Average Utility Costs</th>
+      <th>Zip Code</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @service_areas.each do |service_area| %>
+
+
+    <% @tweetText.each do |tweet| %>
+<% outText = tweet.gsub(/[@]\S*/, '') %>
+
       <tr>
-        <td><%= service_area.lat %></td>
-        <td><%= service_area.long %></td>
-        <td><%= service_area.scope %></td>
-        <td><%= service_area.radi %></td>
-        <td><%= link_to 'Show', service_area %></td>
-        <td><%= link_to 'Edit', edit_service_area_path(service_area) %></td>
-        <td><%= link_to 'Destroy', service_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= outText %></td>
+        <td><%= rand(0..2) %></td>
+        <td><%= @response[rand(0..2)]["outputs"]["residential"] %></td>
+        <td>"$/kwH"</td>
       </tr>
     <% end %>
   </tbody>

@@ -13,10 +13,17 @@ class ServiceAreasController < ApplicationController
 
     @client = Twitter::REST::Client.new(config)
 
-    @tweetOutput = []
+    @tweetText = []
+    @tweetUrl = []
     @client.search('sssolarfl').take(10).each do |tweet|
-        @tweetOutput << tweet.text << " [source: ] " << tweet.uri.path << "----------"
+        @tweetText << tweet.full_text 
+        @tweetUrl << tweet.uri.path
      end
+
+     @response = []
+     @response << HTTParty.get("https://developer.nrel.gov/api/utility_rates/v3.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=26.8&lon=-80.2")
+     @response << HTTParty.get("https://developer.nrel.gov/api/utility_rates/v3.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=28.4957213&lon=-81.53718")
+     @response << HTTParty.get("https://developer.nrel.gov/api/utility_rates/v3.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=40.6454195&lon=-74.085427")
 
     #twitterUserFind = client.user("sssolar")
     # End of Twitter stuff --------------------
