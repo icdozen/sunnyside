@@ -1,4 +1,4 @@
-<%= form_for(@contractor) do |f| %>
+<%= form_for @contractor, :html => {:class => "pure-form"} do |f| %>
   <% if @contractor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
@@ -10,155 +10,57 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
+
+  <fieldset class="pure-group">
+    <%= f.text_field :name, class: ('pure-input-1-2'), placeholder: "Name",style:"margin-left: 16vw" %>
+  </fieldset>
+  
+  <fieldset class="pure-group">
+    <%= f.text_field :email, class: ('pure-input-1-2'), placeholder: "Email",style:"margin-left: 16vw" %>
+   </fieldset> 
   <!-- <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
   </div> -->
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.label :address %><br>
-    <%= f.text_field :address  %>
-    <input id="submit" type="button" value="Go Get Me">
-  </div>
+  <fieldset class="pure-group">
+    <%= f.password_field :password, class: ('pure-input-1-2'), placeholder: "Password",style:"margin-left: 16vw" %>
+  </fieldset>
+  <fieldset class="pure-group">
+    <%= f.password_field :password_confirmation, class: ('pure-input-1-2'), placeholder: "Password Confirm",style:"margin-left: 16vw" %>
+  </fieldset>
+ 
+   <fieldset class="pure-group">
+    <%= f.text_field :address, class: ('pure-input-1-2'), placeholder: "Address",style:"margin-left: 16vw"  %>
+    
+ 
+    <input id="submit" type="button" value="Go Get Me" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw" >
 
-  <div>
+   </fieldset>  
+
+
+  <div hidden>
+
     <%= f.label :Lat %><br>
     <%= f.text_field :Lat  %>
   </div>
-  <div>
+  <div hidden>
     <%= f.label :Lng %><br>
     <%= f.text_field :Lng  %>
   </div>
-  <!-- <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div> -->
-  <div class="field">
-    <%= f.label "Properties Serviced" %><br>
-    <%= f.check_box :scope %>
+
+
+  <div class="prop-serviced">
+    <strong><%= f.label "Type of Properties Serviced", style:"margin-left:19vw" %></strong><br>
+    <%= f.check_box :scope, style:"margin-left: 19vw" %>
     <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
-    <%= f.check_box :scope %>
+    <%= f.check_box :scope, style:"margin-left: 19vw" %>
     <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex' %><br>
-    <%= f.check_box :scope %>
+    <%= f.check_box :scope, style:"margin-left: 19vw" %>
     <%= f.label :scope, 'Multifamily', :value => 'Multifamily' %><br>
-    <!-- <%= f.radio_button :scope, 'Mulifamily' %>
-    <%= f.label :scope, 'Mulifamily', :value => 'Mulifamily' %><br> -->
+    
   </div>
-  <div class="actions">
-    <%= f.submit 'Add me or whatever', :id => 'submit_edit' %>
-  </div>
+
+    <%= f.submit 'Add me or whatever', :id => 'submit_edit', class: "pure-button pure-input-1-2 pure-button-primary", style:"margin-left: 16vw" %>
+
 <% end %>
-
-<div id="map"></div>
-
-<script>
-$('#contractor_address').on('change', function(){
-  $('#submit_edit').prop('disabled', true);
-});
-
-  // Note: This example requires that you consent to location sharing when
-  // prompted by your browser. If you see the error "The Geolocation service
-  // failed.", it means you probably did not give permission for the browser to
-  // locate you.
-
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 26.122439, lng: -80.137317},
-      zoom: 9
-    });
-
-    var infoWindow = new google.maps.InfoWindow({map: map});
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        window.pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Gotcha');
-        map.setCenter(pos);
-
-
-      // function populateField (){
-
-        $('#contractor_Lat').val(pos.lat);
-        $('#contractor_Lng').val(pos.lng);
-      // };
-      console.log(pos.formatted_address);
-
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-    var geocoder = new google.maps.Geocoder();
-
-    document.getElementById('submit').addEventListener('click', function() {
-      $('#submit_edit').prop('disabled', false);
-
-      geocodeAddress(geocoder, map);
-    });
-  }
-  function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('contractor_address').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        resultsMap.setCenter(results[0].geometry.location);
-
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-        // alert(marker["position"].lat());
-        $('#contractor_Lat').val(marker["position"].lat());
-        $('#contractor_Lng').val(marker["position"].lng());
-
-        window.marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Sorry not able to find you for the following reason: ' + status);
-      }
-    });
-
-
-  }
-
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
-                          'Error: Your browser doesn\'t support geolocation.');
-  }
-
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
-</script>
-
 

@@ -1,4 +1,4 @@
-/*#back-pic {
+#back-pic {
   height: 54vw;
   background-image: url('http://i.imgur.com/I9McoXX.jpg');
   background-size: cover;
@@ -21,10 +21,175 @@
   padding: 0;
   margin: 0;
 
-}*/
+}
 
+/*========================this is the new css file for responsive menu===============
+*/
+
+.custom-menu-wrapper {
+    background-color: #20c063;
+    margin-bottom: 2.5em;
+    white-space: nowrap;
+    position: relative;
+}
+
+.custom-menu {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+}
+
+.custom-menu .pure-menu-link,
+.custom-menu .pure-menu-heading {
+    color: white;
+}
+
+.custom-menu .pure-menu-link:hover,
+.custom-menu .pure-menu-heading:hover {
+    background-color: transparent;
+}
+
+.custom-menu-top {
+    position: relative;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.custom-menu-brand {
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.custom-menu-toggle {
+    width: 44px;
+    height: 44px;
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    display: none;
+}
+
+.custom-menu-toggle .bar {
+    background-color: white;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 22px;
+    right: 12px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.custom-menu-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-menu-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-menu-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.custom-menu-screen {
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+    height: 3em;
+    width: 70em;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.custom-menu-tucked .custom-menu-screen {
+    -webkit-transform: translateY(-44px);
+    -moz-transform: translateY(-44px);
+    -ms-transform: translateY(-44px);
+    transform: translateY(-44px);
+}
+
+@media (max-width: 62em) {
+
+    .custom-menu {
+        display: block;
+    }
+
+    .custom-menu-toggle {
+        display: block;
+        display: none\9;
+    }
+
+    .custom-menu-bottom {
+        position: absolute;
+        width: 100%;
+        border-top: 1px solid #eee;
+        background-color: #808080\9;
+        z-index: 100;
+    }
+
+    .custom-menu-bottom .pure-menu-link {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .custom-menu-bottom.custom-menu-tucked .pure-menu-link {
+        -webkit-transform: translateX(-140px);
+        -moz-transform: translateX(-140px);
+        -ms-transform: translateX(-140px);
+        transform: translateX(-140px);
+        opacity: 0;
+        opacity: 1\9;
+    }
+
+    .pure-menu-horizontal.custom-menu-tucked {
+        z-index: -1;
+        top: 45px;
+        position: absolute;
+        overflow: hidden;
+    }
+
+}
+
+
+
+
+
+
+/*===================================end of responsive menu=============================
+*/
 /* -------------------------------------------------------
  * -- Pure CSS Pricing style --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+/*/*
+ * -- BASE STYLES --
  * Most of these are inherited from Base, but I want to change a few.
  */
 body {
@@ -45,6 +210,18 @@ p {
 /*
  * -- Layout Styles --
  */
+
+ .new-developer {
+    text-align: center;
+}
+
+.pure-form {
+     margin: auto;
+    width: 60%;
+    
+    padding: 10px;
+}
+
 .l-content {
     margin: 0 auto;
 }
@@ -61,9 +238,7 @@ p {
     box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
 }
 
-.pure-menu-horizontal{
-    background-color: #20c063;
-}
+
 /*
  * -- BANNER --
  * The top banner with the headings. By using a combination
@@ -72,7 +247,7 @@ p {
  */
 
 .banner {
-    background: transparent url('http://i.imgur.com/I9McoXX.jpg') 0 0 no-repeat fixed;
+    background: transparent url('http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg') 0 0 no-repeat fixed;
     text-align: center;
     background-size: cover;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg', sizingMethod='scale');
@@ -216,17 +391,28 @@ p {
     background: #111;
     color: #888;
     text-align: center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 950123d9aacaf384d9c7a1f8cc9271c0fa3ff3f6
 }
     .footer a {
         color: #ddd;
     }
 
+<<<<<<< HEAD
     .formatted {
         display: flex;
         justify-content: space-around;
         width: 55%;
     }
+=======
+.pure-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+>>>>>>> 950123d9aacaf384d9c7a1f8cc9271c0fa3ff3f6
 
 /*
  * -- TABLET MEDIA QUERIES --
@@ -257,6 +443,7 @@ p {
     }
 }
 
+<<<<<<< HEAD
 .pics {
   max-height: 100%:
   height: auto;
@@ -264,3 +451,8 @@ p {
   margin-left: 40px;
   margin-top: 20px;
 }
+=======
+
+
+
+>>>>>>> 950123d9aacaf384d9c7a1f8cc9271c0fa3ff3f6

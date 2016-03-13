@@ -1,4 +1,8 @@
-<%= form_for(@contractor) do |f| %>
+<div class="new-developer">
+<h1>Edit Me</h1>
+</div>
+
+<%= form_for @contractor, :html => {:class => "pure-form"} do |f| %>
   <% if @contractor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
@@ -10,51 +14,45 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <!-- <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div> -->
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.label :address %><br>
-    <%= f.text_field :address  %>
-    <input id="submit" type="button" value="Go Get Me">
-  </div>
+  
+  <fieldset class="pure-group">
+    <%= f.text_field :name, class: ('pure-input-1-2'), placeholder: "Name",style:"margin-left: 16vw" %>
+  </fieldset>
+  <fieldset class="pure-group">
+    <%= f.text_field :email, class: ('pure-input-1-2'), placeholder: "Email",style:"margin-left: 16vw" %>
+  </fieldset>
 
+    <fieldset class="pure-group">
+    <%= f.password_field :password, class: ('pure-input-1-2'), placeholder: "Change Password",style:"margin-left: 16vw" %>
+  </fieldset>
+  <fieldset class="pure-group">
+    <%= f.password_field :password_confirmation, class: ('pure-input-1-2'), placeholder: "Password Confirm",style:"margin-left: 16vw" %>
+  </fieldset>
+  <fieldset class="pure-group">
+    <%= f.text_field :address, class: ('pure-input-1-2'), placeholder: "Address",style:"margin-left: 16vw" %>
+    <input id="submit" type="button" value="Go Get Me" class="pure-input-1-2" style="margin-left: 16vw">
+  </fieldset>
+
+   <div hidden>
     <%= f.text_field :Lat %>
 
 
     <%= f.text_field :Lng %>
-
+  </div>
+    
 
   <div class="field">
-    <%= f.label "Properties Serviced" %><br>
-    <%= f.check_box :scope %>
+    <%= f.label "Properties Serviced",style:"margin-left:19vw" %><br>
+    <%= f.check_box :scope,style:"margin-left:19vw" %>
     <%= f.label :scope, 'Single Family', :value => 'Single Family' %> <br>
-    <%= f.check_box :scope %>
+    <%= f.check_box :scope,style:"margin-left:19vw" %>
     <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex' %><br>
-    <%= f.check_box :scope %>
+    <%= f.check_box :scope,style:"margin-left:19vw" %>
     <%= f.label :scope, 'Multifamily', :value => 'Multifamily' %><br>
-    <!-- <%= f.radio_button :scope, 'Mulifamily' %>
-    <%= f.label :scope, 'Mulifamily', :value => 'Mulifamily' %><br> -->
+   
   </div>
   <div class="actions">
-    <%= f.submit 'Edit me', :id => 'submit_edit' %>
+    <%= f.submit 'Edit me', :id => 'submit_edit', class: "pure-button pure-input-1-2 pure-button-primary", style:"margin-left: 16vw" %>
   </div>
 
 
@@ -67,10 +65,10 @@
     <title>Simple markers</title>
     <style>
       html, body {
-        height: 40vw;
+     /*   height: 40vw;
         width: 50vw;
         margin: 0;
-        padding: 0;
+        padding: 0;*/
       }
       #map {
         height: 100%;
@@ -94,6 +92,7 @@
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
+          scrollwheel: false,
           center: myLatLng
         });
 

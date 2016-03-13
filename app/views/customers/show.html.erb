@@ -1,20 +1,263 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+<!-- <div id='main'> -->
+<div class="new-developer">
+<h1>Find Your Contractor</h1>
+</div>
+<%= form_for@customer ,:html => {:class => "pure-form"} do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this contractor from being saved:</h2>
 
-<p>
-  <strong>Address:</strong>
-  <%= @customer.address %>
-</p>
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Scope:</strong>
-  <%= @customer.scope %>
-</p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %> |
-<%= link_to 'Search', "/customers/#{@customer.id}/search" %>
+<form class="pure-form">
+  <div id="scope_box" style="margin:auto">
+  <h4><%= f.label "Property Type", id:"box-check",style:"margin-left:21vw" %></h4>
+  <%= f.check_box :scope, style:"margin-left:21vw" %>
+  <%= f.label :scope, 'Single Family', :value => 'Single Family',id:"box-check" %> <br>
+  <%= f.check_box :scope, style:"margin-left:21vw" %>
+  <%= f.label :scope, 'Duplex, Triplex, Quadraplex', :value => 'Duplex, Triplex, Quadraplex',id:"box-check" %><br>
+  <%= f.check_box :scope, style:"margin-left:21vw" %>
+  <%= f.label :scope, 'Multifamily', :value => 'Multifamily',id:"box-check" %><br>
+</div>
+  <% end %>
+
+<form class="pure-form">
+  <input id="latlng" type="text" placeholder="Address" style="margin-left:16vw; width:30vw;" ><br>
+    <button id="drop" onclick="drop()" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Me NOW</button>
+<!--     <input type="text" class="pure-input-rounded">
+    <button type="submit" Search</button> -->
+</form>
+
+
+ <!--  <div id="floating-panel">
+    <form class="pure-form">
+  
+
+  <div id="floating-panel">
+  <input id="latlng" type="text" value="">
+    <button id="drop" onclick="drop()">Search</button>
+
+  </div>
+</div> 
+ -->
+<div hidden>
+
+  <div id="customerLat">
+    <%= @customer.Lat %>
+  </div>
+
+  <div id="customerLan">
+    <%= @customer.Lan %>
+  </div>
+
+</div>
+<div id="map"></div>
+
+<script>
+
+  // If you're adding a number of markers, you may want to drop them on the map
+  // consecutively rather than all at once. This example shows how to use
+  // window.setTimeout() to space your markers' animation.
+
+  var customerLat = parseFloat($('#customerLat').text());
+  var customerLan = parseFloat($('#customerLan').text());
+
+  var neighborhoods = [];
+
+  var markers = [];
+  var map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      scrollwheel: false,
+      center: {lat: customerLat, lng: customerLan}
+    });
+
+    var infoWindow = new google.maps.InfoWindow({map: map});
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        window.pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Hi !');
+        map.setCenter(pos);
+
+      // function populateField (){
+
+
+        $('#customerLat').val(pos.lat);
+        $('#customerLan').val(pos.lng);
+      // };
+      console.log(pos);
+
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('drop').addEventListener('click', function() {
+      $('#submit_edit').prop('disabled', false);
+
+      geocodeAddress(geocoder, map);
+    });
+
+    drop()
+  }
+
+//-----------------------
+  
+  function geocodeAddress(geocoder, resultsMap) {
+    var address = document.getElementById('latlng').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        resultsMap.setCenter(results[0].geometry.location);
+
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+        // alert(marker["position"].lat());
+        $('#customerLat').val(marker["position"].lat());
+        $('#customerLan').val(marker["position"].lng());
+
+        window.marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Sorry not able to find you for the following reason: ' + status);
+      }
+    });
+
+
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+  }
+
+//-------------------------------------------
+
+  function drop() {
+  	neighborhoods = [];
+  	var latOutput = [];
+  	var lngOutput = [];
+    $(".resultsLat").each(function(){
+    	latOutput.push(parseFloat($(this).html()))
+    });
+    $(".resultsLng").each(function(){
+    	lngOutput.push(parseFloat($(this).html()))
+    });
+    for (var x = 0; x < latOutput.length; x++) {
+    neighborhoods.push({lat: latOutput[x],	lng: lngOutput[x]});
+    }
+    clearMarkers()
+    for (var i = 0; i < neighborhoods.length; i++) {
+      addMarkerWithTimeout(neighborhoods[i], i * 200);
+    }
+  }
+
+  function addMarkerWithTimeout(position, timeout) {
+    window.setTimeout(function() {
+      markers.push(new google.maps.Marker({
+        position: position,
+        map: map,
+        animation: google.maps.Animation.DROP
+      }));
+    }, timeout);
+  }
+
+  function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
+</script>
+
+<% results = Customer.searchResults(@customer, @contractors) %>
+
+<div id='main'>
+<br>
+
+<h3>Nearby Solar Installers</h3>
+
+<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Scope</th>
+            <th>Phone</th>
+            <th>email</th>
+        </tr>
+   </thead>
+    <tbody>
+        <tr>
+        <% results.each do |mapthis| %>
+        <td><%= mapthis[:name] %></td>
+        <td><%= mapthis[:address] %></td>
+        <td><%= mapthis[:scope] %></td>
+        <td><%= number_to_phone(mapthis[:phone]) %> </td>
+        <td><%= mapthis[:email] %></td>
+      </tr>
+ <% end %>
+</tbody>
+</table>
+
+<% search = false %>
+<% if (@customer.id != 1) || (search == true) %>
+	<h3>Nearby Solar Installers</h3>
+	<% results.each do |mapthis| %>
+	  <%= '___________' %><br>
+	  <%= mapthis[:name] %><br>
+	  <%= mapthis[:address] %><br>
+	  <%= mapthis[:scope] %><br>
+	  <%= number_to_phone(mapthis[:phone]) %><br>
+	  <%= mapthis[:email] %><br>
+	  <div class="resultsLat" hidden>
+	    <%= mapthis[:Lat] %>
+	  </div>
+	  <div class="resultsLng" hidden>
+	    <%= mapthis[:Lng] %>
+	  </div>
+	<% end %>
+<% end %>
+
+</div>
+<!-- </div> -->
+<br>
+
+</div>
+
+
+
