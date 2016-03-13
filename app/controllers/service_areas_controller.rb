@@ -14,8 +14,8 @@ class ServiceAreasController < ApplicationController
     @client = Twitter::REST::Client.new(config)
 
     @tweetOutput = []
-    @client.search("real estate", result_type: "recent", geocode: '26.781157,-80.398720,10000mi').take(10).each do |tweet|
-        @tweetOutput << tweet.text << "----------"
+    @client.search('sssolarfl').take(10).each do |tweet|
+        @tweetOutput << tweet.text << " [source: ] " << tweet.uri.path << "----------"
      end
 
     #twitterUserFind = client.user("sssolar")
