@@ -1,6 +1,4 @@
 class SearchesController < ApplicationController
-  before_action :set_search, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in
   # GET /searches
   # GET /searches.json
   def index
