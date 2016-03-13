@@ -62,7 +62,6 @@ p {
 
 .custom-menu-wrapper {
     background-color: #20c063;
-    margin-bottom: 2.5em;
     white-space: nowrap;
     position: relative;
 }
@@ -327,7 +326,7 @@ p {
         font-size: 2em;
         color: white;
         font-weight: 500;
-        text-shadow: 0 1px 1px black;
+        text-shadow: 0 2.3px 2.3px black;
     }
 
 
@@ -510,6 +509,11 @@ p {
 
 /*this applies when the screen size goes above 440px
 */
+
+#home-search {
+    display: none;
+}
+
 @media (min-width: 440px) {
     .banner {
         height: 400px;
@@ -521,15 +525,24 @@ p {
         margin-left: 5%;
         margin-right: 5%;
     }
-    body {
+
+    #home-search {
+        display: inline;
     }
     
 }
 
 .pics {
- max-height: 100%:
- height: auto;
- text-align: center;
- margin-left: 40px;
- margin-top: 20px;
+    max-height: 100%:
+    height: auto;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 20px;
 }
+
+
+h6 {
+    font-size: 2vw;
+    color: gray;
+}
+
