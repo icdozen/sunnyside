@@ -485,7 +485,19 @@ p {
     margin-left: 20vw;
 }
 
+/*#pic {
+    max-width: 100%;
+    height: auto;
+}
 
+.pure-img {
+    width: 120px;
+    min-height: 120px;
+    max-height: auto;
+   
+    margin: 3px;
+    padding: 3px;   
+}*/
 
 /*
  * -- TABLET MEDIA QUERIES --
