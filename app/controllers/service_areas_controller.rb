@@ -6,17 +6,17 @@ class ServiceAreasController < ApplicationController
   def index
 
     #Twitter stuff ---------------------------
-    @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "  ePDzJfVWE3O4sMUdwtXJXA9ER"
-      config.consumer_secret     = " 79nDfzyYYlU9CDUFcrXWwDyS6RHmoXXF43zRQs73D8iXepLA3A"
-      config.access_token        = "708752668689375232-JBTDr9aVUTr9DWLTA4bJJc4KnoO3aDO"
-      config.access_token_secret = " oT6wb5RKuUAsX7V0HQuhzpjVM4l6770SMbqYVxgKc6VvE"
-    end
+    config = {
+      consumer_key:    "ePDzJfVWE3O4sMUdwtXJXA9ER",
+      consumer_secret: "79nDfzyYYlU9CDUFcrXWwDyS6RHmoXXF43zRQs73D8iXepLA3A",
+    }
+
+    @client = Twitter::REST::Client.new(config)
 
     @tweetOutput = []
-    # @client.search("to:justinbieber marry me", result_type: "recent").take(3).each do |tweet|
-    #     @tweetOutput << tweet.text
-    #  end
+    @client.search("real estate", result_type: "recent", geocode: '26.781157,-80.398720,10000mi').take(10).each do |tweet|
+        @tweetOutput << tweet.text << "----------"
+     end
 
     #twitterUserFind = client.user("sssolar")
     # End of Twitter stuff --------------------
