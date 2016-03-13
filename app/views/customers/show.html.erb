@@ -3,7 +3,8 @@
 <div class="new-developer">
 <h1>Find Your Contractor</h1>
 </div>
-<%= form_for @customer, :html => {:class => "pure-form"} do |f| %>
+
+<center><%= form_for @customer, :html => {:class => "pure-form"} do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this contractor from being saved:</h2>
@@ -15,7 +16,6 @@
       </ul>
     </div>
   <% end %>
-
 
 <form class="pure-form pure-form-stacked">
 <!--   <div id="scope_box" style="margin:auto">
@@ -35,21 +35,10 @@
 
   <input id="latlng" type="text" placeholder="Address" class="pure-input-1-2" ><br>
   <fieldset>
-    <button id="drop" onclick="" class="pure-button pure-input-1-2 pure-button-primary" style="margin-left: 16vw">Find Contractor</button>
-</fieldset>
+    <button id="drop" onclick="" class="pure-button pure-input-1-2 pure-button-primary">Find Contractor</button>
+  </fieldset>
 
 
- <!--  <div id="floating-panel">
-    <form class="pure-form">
-  
-
-  <div id="floating-panel">
-  <input id="latlng" type="text" value="">
-    <button id="drop" onclick="drop()">Search</button>
-
-  </div>
-</div> 
- -->
 <div hidden>
 
   <div id="customerLat">
@@ -69,6 +58,8 @@
   </div>
 
 </div>
+</center>
+
 
 <div id="map"></div>
 <script>
@@ -232,50 +223,50 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
 
 <% results = Customer.searchResults(@customer, @contractors) %>
 
-<div id='main'>
-<br>
+<center><div id='main'>
+  <br>
 
-<h3>Nearby Solar Installers</h3>
+  <h3>Nearby Solar Installers</h3>
 
-<table class="pure-table pure-table-horizontal">
-    <thead>
-        <tr>
-            <th>Name</th>
-           
-            
-            <th>Contact</th>
-            
+  <table class="pure-table pure-table-horizontal">
+      <thead>
+          <tr>
+              <th>Name</th>
+             
+              
+              <th>Contact</th>
+              
+          </tr>
+     </thead>
+      <tbody>
+          <tr>
+          <% results.each do |mapthis| %>
+          <td><%= mapthis[:name] %></td>
+          <td><%= number_to_phone(mapthis[:phone]) %> </td>
         </tr>
-   </thead>
-    <tbody>
-        <tr>
-        <% results.each do |mapthis| %>
-        <td><%= mapthis[:name] %></td>
-        <td><%= number_to_phone(mapthis[:phone]) %> </td>
-      </tr>
- <% end %>
-</tbody>
-</table>
+   <% end %>
+  </tbody>
+  </table>
 
-<div id="customerLat" hidden>
-  <%= @customer.Lat %>
-</div>
-<div id="customerLan" hidden>
-  <%= @customer.Lan %>
-</div>
+  <div id="customerLat" hidden>
+    <%= @customer.Lat %>
+  </div>
+  <div id="customerLan" hidden>
+    <%= @customer.Lan %>
+  </div>
 
-<% search = true %>
-	<% results.each do |mapthis| %>
+  <% search = true %>
+  	<% results.each do |mapthis| %>
 
-	  <div class="resultsLat" hidden>
-	    <%= mapthis[:Lat] %>
-	  </div>
-	  <div class="resultsLng" hidden>
-	    <%= mapthis[:Lng] %>
-	  </div>
-	<% end %>
+  	  <div class="resultsLat" hidden>
+  	    <%= mapthis[:Lat] %>
+  	  </div>
+  	  <div class="resultsLng" hidden>
+  	    <%= mapthis[:Lng] %>
+  	  </div>
+  	<% end %>
 
-</div>
+</div></center>
 <!-- </div> -->
 <br>
 
