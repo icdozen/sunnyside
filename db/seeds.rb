@@ -9,7 +9,7 @@ Customer.create(name:'testCustomer',address:'Boca Raton, FL',scope:'Duplex, Trip
 Customer.create(name:'testCustomer2',address:'testAddress',scope:'Duplex, Triplex, Quadraplex',email:'test@example.com',username:'exampleUser',password:'asdf',Lat:26.6,Lan:-80.113431)
 
   Contractor.create(name:'Advanced Green Technologies' , scope:'Duplex, Triplex, Quadraplex',email:'agreentech@sunnyside.com', Lat: 26.6035, Lng: -80.16531, phone: 9546587634 ,password:'a', address: '2100 NW 21st Ave, Fort Lauderdale, FL 33311')
-  Contractor.create(name:'Red Hot Solar',scope:'Duplex, Triplex, Quadraplex',email:'RHS@sunnyside.com', password:'a', Lat: 26.674565, Lng: -80.0931, address:'2414 E Sunrise Blvd, Fort Lauderdale, FL 33304')
+  Contractor.create(name:'Red Hot Solar',scope:'Duplex, Triplex, Quadraplex',email:'RHS@sunnyside.com', password:'a', phone: 5617906685,Lat: 26.674565, Lng: -80.0931, address:'2414 E Sunrise Blvd, Fort Lauderdale, FL 33304')
   Contractor.create(name:'All Solar Solutions', scope:'Duplex, Triplex, Quadraplex',email:'allsolar@sunnyside.com', Lat: 26.65456, Lng: -80.213431, phone: 8885163076 , password:'a', address:'244 SW 30th St, Fort Lauderdale, FL 33315')
   Contractor.create(name:'A Great Day for Solar', scope:'Duplex, Triplex, Quadraplex', email:'AGDSolar@sunnyside.com', Lat: 26.63, Lng: -80.123431,phone: 9546587634 , password:'a', address:'3020 NE 32nd Ave, Fort Lauderdale, FL 33308')
   Contractor.create(name:'Sunshine Solar', scope:'Duplex, Triplex, Quadraplex',email:'SunshineSolar@sunnyside.com', Lat: 26.1677402, Lng:	-80.1783216, phone: 9545684876 , password:'a', address:'2805 E Oakland Park Blvd #422, Fort Lauderdale, FL 33306')
