@@ -27,6 +27,11 @@
  * -- Pure CSS Pricing style --
  * Most of these are inherited from Base, but I want to change a few.
  */
+
+.custom-menu-toggle{
+    display:hidden;
+}
+
 body {
     color: #526066;
     min-height: 80vh;
@@ -323,7 +328,7 @@ p {
     background-size: cover;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg', sizingMethod='scale');
 
-    height: 200px;
+    height: 300px;
     width: 100%;
     margin-bottom: 3em;
     display: table;
