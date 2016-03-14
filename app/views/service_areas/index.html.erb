@@ -1,31 +1,57 @@
 
+  <br><br>
+    <center><h2>Twitter Lead Generator</h2><center>
+    <br>
+  <center>
+    <input id="latlng" type="text" placeholder="Tweet" class="pure-input-1-2"><br><br>
+    <input id="latlng" type="text" placeholder="City" class="pure-input-1-2"><br><br>
+    <button id="drop" onclick="showTweets()" class="pure-button pure-input-1-2 pure-button-primary">Search</button>
+  </center>
+    <br><br><br>
 
-<center><h1>Recent Tweets in 33304</h1></center>
 
-<center><table class="pure-table pure-table-horizontal">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Tweet</th>
-      <th>Utility Rate</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-</center>
- <center> <tbody>
+<div id="tweetResults" hidden>
 
-    <% @tweetText.each do |tweet| %>
-    <% outText = tweet.gsub(/[@]\S*/, '') %>
+  <center><h2>Recent Tweets in Miami</h2></center>
 
-      <tr>
-        <td><a href="https://twitter.com/sssolarfl" target="_blank"><%= image_tag "twitter-icon.png", style:"max-width: 1.7em; height: auto; margin-left: 1em" %></a>
-        </td>
-        <td><a href="#"><%= outText %></a></td>
-        <td><%= number_to_currency @response[rand(0..2)]["outputs"]["residential"] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</center>
-<br>
+  <center>
+    <table class="pure-table pure-table-horizontal">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Tweet</th>
+          <th>Utility Rate</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
 
+      <% i = 0 %>
+        <% @tweetText.each do |tweet| %>
+        <% outText = tweet.gsub(/[@]\S*/, '') %>
+
+          <tr>
+            <td><a href="https://twitter.com/<%= @tweetUrl[i] %>" target="_blank"><%= image_tag "twitter-icon.png", style:"max-width: 1.7em; height: auto; margin-left: 1em" %></a>
+            </td>
+            <td><a href="https://twitter.com/<%= @tweetUrl[i] %>" target="_blank"><%= outText %></a></td>
+            <td><%= number_to_currency @response[rand(0..2)]["outputs"]["residential"] %></td>
+          </tr>
+          <% i = i + 1 %>
+        <% end %>
+
+      </tbody>
+    </table>
+  </center>
+
+</div>
+
+<br><br><br>
+
+
+<script>
+
+  function showTweets(){
+    $("#tweetResults").removeAttr("hidden");
+  }
+
+</script>
