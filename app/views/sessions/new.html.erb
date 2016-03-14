@@ -1,14 +1,19 @@
+<br><br>
+
 <%= form_tag sessions_path, class: "pure-form" do  %>
 
     <center><fieldset class="login-group", style="left:16vw">
+    Username<br>
     <%= text_field_tag :email %> 
     </fieldset></center>
 
   <center><fieldset class="login-group">
+    Password<br>
     <%= password_field_tag :password %>
     </fieldset></center>
   
-  
-   <center> <%= submit_tag 'Log in', class: "pure-button pure-input-1-2 pure-button-primary" %>
+   <center> <%= submit_tag 'Log in', class: "pure-button pure-input-1-2 pure-button-primary", style: "width: 75px;" %>
   </form></center>
 <% end %>
+
+<br><br>
