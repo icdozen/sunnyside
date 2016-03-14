@@ -35,6 +35,16 @@
 <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 <![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".u-1-3").hover(function(){
+        $(this).css("background-color", "#0074e4");
+        }, function(){
+        $(this).css("background-color", "rgba(0,0,0,.5)");
+    });
+});
+</script>
 
 </head>
 <body>
@@ -50,21 +60,45 @@
 </div>
  -->
 <div class="banner">
-    <h1 class="banner-head">
-        Find a Solar Installer<br>
-        Near You
-        <p></p>
-        <form id="home-search">
+    <div >
+   <center> <h1 class="banner-head" >
+        Find your solar installer</h1></center>
+    </div style="margin-left=200px">
+
+   <center><div style="width: 900px;margin-left: 269px;margin-top: 48px;">
+         <div class="u-1-3" style="float: left; width: 200px;">Single Family</div>
+       
+     
+        <div class="u-1-3" style="float: left; width: 200px; height:18px">Duplex - Quadraplex</div>
+
+
+       <div class="u-1-3" style="float: left; width: 180px;">Multifamily</div>
+       <br style="clear: left;"> 
+    </div></center>
+<!-- <div style="width: 500px;">
+ <div style="float: left; width: 200px;">Left Stuff</div>
+ <div style="float: left; width: 100px;">Middle Stuff</div>
+ <div style="float: left; width: 200px;">Right Stuff</div>
+ <br style="clear: left;" />
+</div> -->
+ 
+
+  <!--       <div class="pure-g">
+            <div class="pure-u-1-3"><p style=" border-style: solid;border-width: 2px; margin-top: 170px;">Single Family</p></div>
+            <div class="pure-u-1-3"><p style=" border-style: solid;border-width: 2px; margin-top: 170px;">Duplex - Quadraplex</p></div>
+            <div class="pure-u-1-3"><p style=" border-style: solid;border-width: 2px; margin-top: 170px;">Multifamily</p></div>
+        </div> -->
+      <center>  <form id="home-search">
             <h6>
 
                 <input type="text" placeholder="Enter an address, city or ZIP code" required="" style="height: 3vw; width: 40vw; border-radius:8px; font-family: sans serif">
                 <a href="/customers/1"><input type="button" value="Search" style="height: 3.5vw; width: 10vw; background-color:#20c063; color:white; border-radius:8px;font-family: sans serif"></a>
 
             </h6>
-        </form>
-    </h1>
+        </form></center>
+  
+  
 </div>
-
 
 
 <div class="l-content">
@@ -134,9 +168,9 @@
             </div>
         </div>
     </div> <!-- end pricing-tables -->
-
+<center><h2>What Our Customers are Saying...</h2></center>
     <div class="information pure-g" >
-        <div class="new-developer"><h2>What Our Customers are Saying...</h2></div>
+        
         <div class="pure-u-1 pure-u-md-1-2">
             <div class="l-box">
                 <h3 class="information-head">Jaime in Fort Lauderdale</h3>
