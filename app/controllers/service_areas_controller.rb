@@ -29,7 +29,7 @@ class ServiceAreasController < ApplicationController
      @sunData << HTTParty.get("https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=26.8&lon=-80.2")
      @sunData << HTTParty.get("https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=28.4957213&lon=-81.53718")
      @sunData << HTTParty.get("https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=40.6454195&lon=-74.085427")
-
+     @sunData << HTTParty.get("https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=rKbDNouDLW6PmZGtCul0HNLveXRhnKy51xLcdyMn&lat=30.5909799&lon=-96.3618735")
 
     #twitterUserFind = client.user("sssolar")
     # End of Twitter stuff --------------------

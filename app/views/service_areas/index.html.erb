@@ -19,8 +19,8 @@
       <thead>
         <tr>
           <th><center><%= image_tag "twitter-icon.png", style:"max-width: 1.7em; height: auto; margin-left: 1em" %></center></th>
-          <th><center><img src="http://clipartsign.com/upload/2016/02/17/green-dollar-sign-clipart-free-clipart-images.png" height="22px"> ($/kWh)</center></th>
-          <th><center><img src="http://images.clipartpanda.com/sun-clipart-transparent-background-dcrGpaBc9.gif" height="25px">(kWh/m2/day)</center></th>
+          <th><center><img src="http://clipartsign.com/upload/2016/02/17/green-dollar-sign-clipart-free-clipart-images.png" height="22px"> <br>($/kWh)</center></th>
+          <th><center><img src="http://images.clipartpanda.com/sun-clipart-transparent-background-dcrGpaBc9.gif" height="25px"> <br>(kWh/m2/day)</center></th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -33,7 +33,7 @@
           <tr>
             <td><a href="https://twitter.com/<%= @tweetUrl[i] %>" target="_blank"><%= outText %></a></td>
             <td><center><%= number_to_currency @response[rand(0..2)]["outputs"]["residential"] %><center></td>
-            <td><center><%= @sunData[rand(0..2)]["outputs"]["avg_dni"]["annual"] %></center></td>
+            <td><center><%= @sunData[rand(0..3)]["outputs"]["avg_dni"]["annual"] %></center></td>
           </tr>
           <% i = i + 1 %>
         <% end %>
