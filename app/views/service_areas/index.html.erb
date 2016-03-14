@@ -18,7 +18,7 @@
     <% outText = tweet.gsub(/[@]\S*/, '') %>
 
       <tr>
-        <td><a href="#"><%= image_tag "twitter-icon.png", style:"max-width: 1.7em; height: auto; margin-left: 1em" %></a>
+        <td><a href="https://twitter.com/sssolarfl" target="_blank"><%= image_tag "twitter-icon.png", style:"max-width: 1.7em; height: auto; margin-left: 1em" %></a>
         </td>
         <td><a href="#"><%= outText %></a></td>
         <td><%= number_to_currency @response[rand(0..2)]["outputs"]["residential"] %></td>
