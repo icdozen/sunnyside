@@ -31,7 +31,7 @@
 </form>
 
 
-  <input id="latlng" type="text" placeholder="Address" class="pure-input-1-2"><br><br>
+  <input id="latlng" type="text" placeholder="Address" class="pure-inpu t-1-2"><br><br>
     <button id="drop" onclick="" class="pure-button pure-input-1-2 pure-button-primary">Find Contractor</button>
     <br><br>
 
@@ -58,7 +58,6 @@
 
 
 <div id="map"></div>
-
 <script>
 
   // If you're adding a number of markers, you may want to drop them on the map
@@ -222,7 +221,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
 <center><div id='main'>
   <br>
 
-  <h3>Nearby Solar Installers</h3>
+  <h3>Nearby Solar Contractors</h3>
 
   <table class="pure-table pure-table-horizontal">
       <thead>
@@ -237,8 +236,8 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
       <tbody>
           <tr>
           <% results.each do |mapthis| %>
-          <td><a href="#"><%= mapthis[:name] %></a></td>
-          <td><a href="tel:561-310-9933"><%= number_to_phone(mapthis[:phone]) %></a> </td>
+          <td><%= mapthis[:name] %></td>
+          <td><%= number_to_phone(mapthis[:phone]) %> </td>
         </tr>
    <% end %>
   </tbody>
