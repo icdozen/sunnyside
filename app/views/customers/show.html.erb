@@ -236,8 +236,8 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
       <tbody>
           <tr>
           <% results.each do |mapthis| %>
-          <td><%= mapthis[:name] %></td>
-          <td><%= number_to_phone(mapthis[:phone]) %> </td>
+          <td><a href="/contractors/1"><%= mapthis[:name] %></a></td>
+          <td><a href="tel:561-310-9933"><%= number_to_phone(mapthis[:phone]) %></a></td>
         </tr>
    <% end %>
   </tbody>
