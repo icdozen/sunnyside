@@ -28,6 +28,12 @@
  * Most of these are inherited from Base, but I want to change a few.
  */
 
+.tweetBody {
+  background: transparent url('http://i.imgur.com/WuNKlwB.jpg?2') 0 0 no-repeat fixed;
+  text-align: center;
+  background-size: cover;
+}
+
 .custom-menu-toggle{
     display:hidden;
 }
