@@ -39,3 +39,4 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 gem 'twitter'
 gem 'httparty'
+gem 'gon'

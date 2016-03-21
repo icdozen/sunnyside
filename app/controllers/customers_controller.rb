@@ -15,6 +15,8 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @contractors = Contractor.all
+    gon.customer = @customer
+    gon.contractors = @contractors
   end
 
   def search # To be deleted

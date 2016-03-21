@@ -16,56 +16,50 @@
     </div>
   <% end %>
 
-<form class="pure-form pure-form-stacked">
-<!--   <div id="scope_box" style="margin:auto">
- -->  <h3><label for="scope">Property Type</label></h3>
-        <select id="scope">
-            <option></option>
-            <option>Single Family</option>
-            <option>Duplex, Triplex, Quadraplex</option>
-            <option>Multifamily</option>
-        </select>
-
-</div>
-  <% end %>
-</form>
+  <form class="pure-form pure-form-stacked">
+    <h3><label for="scope">Property Type</label></h3>
+      <select id="scope">
+        <option></option>
+        <option>Single Family</option>
+        <option>Duplex, Triplex, Quadraplex</option>
+        <option>Multifamily</option>
+      </select>
+  </form>
 
 
   <input id="latlng" type="text" placeholder="Address" class="pure-inpu t-1-2"><br><br>
     <button id="drop" onclick="" class="pure-button pure-input-1-2 pure-button-primary">Find Contractor</button>
     <br><br>
 
-<div hidden>
+  <div hidden>
 
-  <div id="customerLat">
-    <%= @customer.Lat %>
+    <div id="customerLat">
+      <%= @customer.Lat %>
+    </div>
+
+    <div id="customerLan">
+      <%= @customer.Lan %>
+    </div>
+
+    <div id="contractorLats">
+      <%=  Customer.contractorLats(@contractors)%>
+    </div>
+
+    <div id="contractorLngs">
+      <%=  Customer.contractorLngs(@contractors)%>
+    </div>
+
   </div>
-
-  <div id="customerLan">
-    <%= @customer.Lan %>
-  </div>
-
-  <div id="contractorLats">
-    <%=  Customer.contractorLats(@contractors)%>
-  </div>
-
-  <div id="contractorLngs">
-    <%=  Customer.contractorLngs(@contractors)%>
-  </div>
-
-</div>
 </center>
 
 
 <div id="map"></div>
+
 <script>
 
   // If you're adding a number of markers, you may want to drop them on the map
   // consecutively rather than all at once. This example shows how to use
   // window.setTimeout() to space your markers' animation.
-
-  var customerLat = parseFloat($('#customerLat').text());
-  var customerLan = parseFloat($('#customerLan').text());
 
   var neighborhoods = [];
 
@@ -76,7 +70,7 @@
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 9,
       scrollwheel: false,
-      center: {lat: customerLat, lng: customerLan}
+      center: {lat: gon.customer.Lat, lng: gon.customer.Lan}
     });
 
     // Try HTML5 geolocation.
@@ -99,8 +93,8 @@
       // function populateField (){
 
 
-        $('#customerLat').val(pos.lat);
-        $('#customerLan').val(pos.lng);
+        gon.customer.Lat = pos.lat;
+        gon.customer.Lan = pos.lng;
       // };
       console.log(pos);
 
@@ -117,7 +111,7 @@
     document.getElementById('drop').addEventListener('click', function() {
 
       geocodeAddress(geocoder, map);
-      $.ajax("/customers/1");
+
       drop();
     });
  
@@ -135,11 +129,8 @@
         console.log(results[0].geometry.location.lat());
         console.log(results[0].geometry.location.lng());
 
-        var customerLatUpdate = results[0].geometry.location.lat();
-        var customerLngUpdate = results[0].geometry.location.lng();
-
-        $('#customerLat').val(customerLatUpdate);
-        $('#customerLan').val(customerLngUpdate);
+        gon.customer.Lat = results[0].geometry.location.lat();
+        gon.customer.Lan = results[0].geometry.location.lng();
 
       } else {
         alert('Sorry not able to find you for the following reason: ' + status);
@@ -234,37 +225,27 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
           </tr>
      </thead>
       <tbody>
-          <tr>
-          <% results.each do |mapthis| %>
+        <tr>
+        <% results.each do |mapthis| %>
           <td><a href="/contractors/1"><%= mapthis[:name] %></a></td>
           <td><a href="tel:561-310-9933"><%= number_to_phone(mapthis[:phone]) %></a></td>
         </tr>
-   <% end %>
+         <% end %>
   </tbody>
   </table>
 
-  <div id="customerLat" hidden>
-    <%= @customer.Lat %>
-  </div>
-  <div id="customerLan" hidden>
-    <%= @customer.Lan %>
-  </div>
-
   <% search = true %>
-  	<% results.each do |mapthis| %>
+	<% results.each do |mapthis| %>
 
-  	  <div class="resultsLat" hidden>
-  	    <%= mapthis[:Lat] %>
-  	  </div>
-  	  <div class="resultsLng" hidden>
-  	    <%= mapthis[:Lng] %>
-  	  </div>
-  	<% end %>
+	  <div class="resultsLat" hidden>
+	    <%= mapthis[:Lat] %>
+	  </div>
+	  <div class="resultsLng" hidden>
+	    <%= mapthis[:Lng] %>
+	  </div>
+	<% end %>
 
 </div></center>
-<!-- </div> -->
 <br><br>
 
-
-
-
+<% end %>
