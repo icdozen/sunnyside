@@ -1,3 +1,4 @@
 == SunnySide
- Built for mobile first, this application bridges the gap between solar contractors and their customers.  Developed using Ruby on Rails, accessing data from 4-different API’s.  
-
+ Built for mobile first, this application bridges the gap
+ between solar contractors and their customers.
+ Developed using Ruby on Rails, accessing data from 4-different APIs.  
