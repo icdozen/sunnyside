@@ -1,281 +1,180 @@
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A layout example that shows off a responsive pricing table.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive pricing table.">
 
     <title>SunnySide</title>
 
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-
-
-
-<!--[if lte IE 8]>
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
-  
-<![endif]-->
-<!--[if gt IE 8]><!-->
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-  
-<!--<![endif]-->
-
-  
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/pricing-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/pricing.css">
-    <!--<![endif]-->
-  
-
-
-    
-<!--[if lt IE 9]>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
-<![endif]-->
-
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+      
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">    
 </head>
-<body>
+
+<body onload="homeGeocode()">
+
+  <script>
+
+  function homeGeocode() {
+  console.log("test");
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        window.pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
 
 
-<!-- <div class="pure-menu pure-menu-horizontal">
-    <a href="#" class="pure-menu-heading">sunnySide</a>
-    <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
-        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Education</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
-    </ul>
-</div>
- -->
-<div class="banner">
-    <h1 class="banner-head">
-        Find a Solar Installer<br>
-        Near You
-        <p></p>
-        <form id="home-search">
-            <h6>
-
-                <input type="text" required="" style="height: 3vw; width: 40vw; border-radius:8px;">
-                <a href="/customers/1"><input type="button" value="Search" style="height: 3.5vw; width: 10vw; background-color:#20c063; color:white; border-radius:8px;"></a>
-
-            </h6>
-        </form>
-    </h1>
-</div>
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+                            'Error: The Geolocation service failed.' :
+                            'Error: Your browser doesn\'t support geolocation.');
+    }
+  }
 
 
+  </script>
 
-<div class="l-content">
-    <div class="new-developer"><h2>Contractors Near You</h2></div>
-    <center><h4><a href="customers/1">Not your city?</a></h4></center>
-    <div class="pricing-tables pure-g" >
-        <div class="pure-u-1 pure-u-md-1-3" >
-            <div class="pricing-table pricing-table-free" >
-                <div class="pricing-table-header" style="background-color:white">
-                    <h2></h2>
 
-                    <span class="pricing-table-price">
+    <div class="banner" style="height=80vw">
+        <h1 class="banner-head" >
+            Find a Solar Contractor<br>
+            Near You
+            <p></p>
+            <form id="home-search">
+                <h6>
 
-                        <center><img src="http://i.imgur.com/ANUBaM4.png" class="pure-img"></center> 
+                    <input type="text" required="" style="height: 3vw; width: 40vw; border-radius:8px;">
+                    <a href="/customers/1"><input type="button" value="Search" style="height: 3.5vw; width: 10vw; background-color:#20c063; color:white; border-radius:8px;"></a>
 
-                    </span>
+                </h6>
+            </form>
+        </h1>
+    </div>
+
+
+    <div class="l-content">
+        <div class="new-developer"><h2>Contractors Near Fort Lauderdale</h2></div>
+        <center><h4><a href="customers/1">Not your city?</a></h4></center>
+        <div class="pricing-tables pure-g" >
+            <div class="pure-u-1 pure-u-md-1-3" >
+                <div class="pricing-table pricing-table-free" >
+                    <div class="pricing-table-header" style="background-color:white">
+                        <h2></h2>
+
+                        <span class="pricing-table-price">
+
+                            <center><img src="http://i.imgur.com/ANUBaM4.png" class="pure-img"></center> 
+
+                        </span>
+                    </div>
+
+                    <ul class="pricing-table-list">
+                        <li>Rating: B</li>
+                        <li>Scope: Duplex, Triplex, Quadraplex</li>
+                    </ul>
+
+                    <button class="button-choose pure-button">Choose</button>
                 </div>
-
-                <ul class="pricing-table-list">
-                    <li>Rating: B</li>
-                    <li>Scope: Duplex, Triplex, Quadraplex</li>
-                </ul>
-
-                <button class="button-choose pure-button">Choose</button>
             </div>
-        </div>
 
-         <div class="pure-u-1 pure-u-md-1-3">
-            <div class="pricing-table pricing-table-biz pricing-table-selected">
-                <div class="pricing-table-header" style="background-color:white">
-                    <h2></h2>
+             <div class="pure-u-1 pure-u-md-1-3">
+                <div class="pricing-table pricing-table-biz pricing-table-selected">
+                    <div class="pricing-table-header" style="background-color:white">
+                        <h2></h2>
 
-                    <span class="pricing-table-price">
+                        <span class="pricing-table-price">
 
-                        <center><img src="http://i.imgur.com/aHscH67.png" class="pure-img" id="pic"></center> 
+                            <center><img src="http://i.imgur.com/aHscH67.png" class="pure-img" id="pic"></center> 
 
-                    </span>
+                        </span>
+                    </div>
+
+                    <ul class="pricing-table-list">
+                        <li>Rating: A</li>
+                        <li>Scope: Single Family</li>
+                    </ul>
+
+                    <button class="button-choose pure-button">Choose</button>
                 </div>
-
-                <ul class="pricing-table-list">
-                    <li>Rating: A</li>
-                    <li>Scope: Single Family</li>
-                </ul>
-
-                <button class="button-choose pure-button">Choose</button>
             </div>
-        </div>
 
-           <div class="pure-u-1 pure-u-md-1-3">
-            <div class="pricing-table pricing-table-free">
-                <div class="pricing-table-header" style="background-color:white">
-                    <h2></h2>
+               <div class="pure-u-1 pure-u-md-1-3">
+                <div class="pricing-table pricing-table-free">
+                    <div class="pricing-table-header" style="background-color:white">
+                        <h2></h2>
 
-                    <span class="pricing-table-price">
+                        <span class="pricing-table-price">
 
-                        <center><img src="http://i.imgur.com/4FjjKeK.png" class="pure-img"></center> 
+                            <center><img src="http://i.imgur.com/4FjjKeK.png" class="pure-img"></center> 
 
-                    </span>
+                        </span>
+                    </div>
+
+                    <ul class="pricing-table-list">
+                        <li>Rating: A</li>
+                        <li>Scope: Multifamily</li>
+                    </ul>
+
+                    <button class="button-choose pure-button">Choose</button>
                 </div>
-
-                <ul class="pricing-table-list">
-                    <li>Rating: A</li>
-                    <li>Scope: Multifamily</li>
-                </ul>
-
-                <button class="button-choose pure-button">Choose</button>
             </div>
-        </div>
-    </div> <!-- end pricing-tables -->
+        </div> <!-- end pricing-tables -->
 
-    <div class="information pure-g" >
-        <div class="new-developer"><h2>What Our Customers are Saying...</h2></div>
-        <div class="pure-u-1 pure-u-md-1-2">
-            <div class="l-box">
-                <h3 class="information-head">Jaime in Fort Lauderdale</h3>
-                <p>
-                    sunnySide is Great! Found a great installer. :)
-                </p>
+        <div class="information pure-g" >
+            <div class="new-developer"><h2>What Our Customers are Saying...</h2></div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="l-box">
+                    <h3 class="information-head">Jaime in Fort Lauderdale</h3>
+                    <p>
+                        SunnySide is great! Found a great contractor. :)
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="pure-u-1 pure-u-md-1-2">
-            <div class="l-box">
-                <h3 class="information-head">Ron in San Diago</h3>
-                <p>
-                    This site saved my marriage
-                </p>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="l-box">
+                    <h3 class="information-head">Ron in San Diago</h3>
+                    <p>
+                        This site saved my marriage
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="pure-u-1 pure-u-md-1-2">
-            <div class="l-box">
-                <h3 class="information-head">Stevie in Tampa</h3>
-                <p>
-                    Sometimes I go to sunnySide.com Just for fun!
-                </p>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="l-box">
+                    <h3 class="information-head">Stevie in Tampa</h3>
+                    <p>
+                        Sometimes I go to SunnySide.com Just for fun!
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="pure-u-1 pure-u-md-1-2">
-            <div class="l-box">
-                <h3 class="information-head">Jose in Hialeah</h3>
-                <p>
-                    Saved me soo much time. Found everything I needed on the first page.  Great design choices.
-                </p>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="l-box">
+                    <h3 class="information-head">Jose in Hialeah</h3>
+                    <p>
+                        Saved me soo much time. Found everything I needed on the first page.  Great design choices.
+                    </p>
+                </div>
             </div>
-        </div>
-    </div> <!-- end information -->
-</div> <!-- end l-content -->
-
-<!-- <div class="footer l-box">
-    <p>
-        <a href="#">Try now</a> for 14 days. No credit card required. Header image courtesy of <a href='http://unsplash.com/'>Unsplash</a>.
-    </p>
-</div> -->
-
-
-
+        </div> <!-- end information -->
+    </div> <!-- end l-content -->
 
 </body>
 </html>
-
-<!-- <div class='home-logo'>
-
-    <div class='header-links'>
-        </div>
-</div>
- -->
-<!-- <header id="header">
-<div class="section group">
-    <div class="col span_2_of_6">
-        <div id='head'>
-            <h2>sunnySide</h2>
-        </div>
-    </div>
-        <div class="col span_4_of_6">
-            <div id="nav-bar">
-                <ul>
-                    <li>Login</li>
-                    <li>Education</li>
-                    <li>About us</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-</header>
-
-
-<div class="section group">
-    <div class="col span_6_of_6 sunnyheader">
-        
-        <div id='back-pic'>
-            <div>
-        <div class="col span_5_of_6">
-        </div>
-            <div class="col span_1_of_6">
-                <div id='contain-back-text'>
-                <ul>
-                    <li>Find a Contractor</li>
-                </ul>
-                </div>
-                </div>
-
-            </div>
-           
-        </div>
-    </div>
-    
-</div>
-
-<div class="section group">
-    <div class="col span_6_of_6">
-    6 of 6 Solar Contractors Near You
-    </div>
-</div>    
-<div class="section group">    
-    <div class="col span_2_of_6">
-        <div>
-            2 of 6 local contractor
-        </div>
-    </div>
-    <div class="col span_2_of_6">
-        <div>
-            2 of 6 local contractor
-        </div>
-    </div>
-    <div class="col span_2_of_6">
-        <div>
-            2 of 6 local contractor
-        </div>
-    </div>
-</div>
-
-
-
-<footer>
-<div class="sitemap-links-block">
-        <h5>The Company</h5>
-         <div id='footer-text'>
-          <ul>
-            <li>About Us</li>
-                    <li>In The Press</li>
-                    <li>Careers</li>
-                    <li>Privacy Policy</li>
-                    <li>Affiliate Program</li>
-                    <li>Investor Relations</li>
-                  </ul>
-                </div>
-            </div>
-
-
-</footer>
- -->

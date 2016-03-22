@@ -1,0 +1,188 @@
+Searching 232 files for ".pure-menu"
+
+/Users/Slvr/finalp/sunnyside/app/assets/stylesheets/application.css:
+   82  }
+   83  
+   84: .custom-menu .pure-menu-link,
+   85: .custom-menu .pure-menu-heading {
+   86      color: white;
+   87  }
+   88  
+   89: .custom-menu .pure-menu-link:hover,
+   90: .custom-menu .pure-menu-heading:hover {
+   91      background-color: transparent;
+   92  }
+   ..
+  189      }
+  190  
+  191:     .custom-menu-bottom .pure-menu-link {
+  192          opacity: 1;
+  193          -webkit-transform: translateX(0);
+  ...
+  201      }
+  202  
+  203:     .custom-menu-bottom.custom-menu-tucked .pure-menu-link {
+  204          -webkit-transform: translateX(-140px);
+  205          -moz-transform: translateX(-140px);
+  ...
+  210      }
+  211  
+  212:     .pure-menu-horizontal.custom-menu-tucked {
+  213          z-index: -1;
+  214          top: 45px;
+  ...
+  234   * Make the menu have a very faint box-shadow.
+  235   */
+  236: .pure-menu {
+  237      box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+  238       color:black;
+  ...
+  252      padding: 10px;
+  253  }
+  254: /*.pure-menu-horizontal{
+  255      background-color: #20c063;
+  256  
+  ...
+  306   }
+  307  
+  308: .pure-menu-item {
+  309    color:black;
+  310  }
+
+/Users/Slvr/finalp/sunnyside/app/assets/stylesheets/customers.css:
+   90   * Make the menu have a very faint box-shadow.
+   91   */
+   92: .pure-menu {
+   93      box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+   94  }
+
+/Users/Slvr/finalp/sunnyside/app/assets/stylesheets/sessions.css:
+   14      padding: 10px;
+   15  }
+   16: .pure-menu-horizontal{
+   17      background-color: #20c063;
+   18  
+   ..
+   68   }
+   69  
+   70: .pure-menu-item {
+   71    color:black;
+   72  }
+
+13 matches across 3 files
+
+
+Searching 232 files for "tweettext"
+
+/Users/Slvr/finalp/sunnyside/app/controllers/service_areas_controller.rb:
+   14      @client = Twitter::REST::Client.new(config)
+   15  
+   16:     @tweetText = []
+   17      @tweetUrl = []
+   18      @client.search('sssolarfl').take(10).each do |tweet|
+   19:         @tweetText << tweet.full_text 
+   20          @tweetUrl << tweet.uri.path
+   21       end
+
+/Users/Slvr/finalp/sunnyside/app/views/service_areas/index.html.erb:
+   15   <center> <tbody>
+   16  
+   17:     <% @tweetText.each do |tweet| %>
+   18      <% outText = tweet.gsub(/[@]\S*/, '') %>
+   19  
+
+3 matches across 2 files
+
+
+Searching 232 files for "installer"
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/about-us.html.erb:
+    6  <center><font face="helvetica" color="black">
+    7    SunnySide connects people
+    8:   with solar panel installers.<br> 
+    9    Our careful vetting process ensures that you will find <br>
+   10: a installer you can trust<br><br><br>
+   11  
+   12  <div class="pure-g">
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/education.html.erb:
+    4    <!-- <div class='formatted'>
+    5       <div class="pics">
+    6:           <%= image_tag "solarinstaller.jpg", style:"max-width: 150px; height: auto;" %>
+    7        </div> -->
+    8  <STYLE TYPE="text/css">
+    .
+   30  <!-- <div class='formatted'>
+   31     <div class="pics"> -->
+   32:   <%= image_tag "solarinstaller.jpg", style:"max-width: 150px; height: auto;" %>
+   33      <!-- </div> -->
+   34  
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/home.html.erb:
+   54      <div class="banner" style="height=80vw">
+   55          <h1 class="banner-head" >
+   56:             Find a Solar Installer<br>
+   57              Near You
+   58              <p></p>
+   ..
+  143                      <h3 class="information-head">Jaime in Fort Lauderdale</h3>
+  144                      <p>
+  145:                         SunnySide is great! Found a great installer. :)
+  146                      </p>
+  147                  </div>
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/show.html.erb:
+  222    <br>
+  223  
+  224:   <h3>Nearby Solar Installers</h3>
+  225  
+  226    <table class="pure-table pure-table-horizontal">
+
+7 matches across 4 files
+
+
+Searching 232 files for "installer"
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/about-us.html.erb:
+    7  <center><font face="helvetica" color="black" text-align="left">
+    8    SunnySide connects people
+    9:   with solar panel contractors.<br>
+   10    Our careful vetting process ensures that you will find <br>
+   11: a installer you can trust<br><br><br>
+   12  
+   13  <div class="pure-g">
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/education.html.erb:
+    4    <!-- <div class='formatted'>
+    5       <div class="pics">
+    6:           <%= image_tag "solarinstaller.jpg", style:"max-width: 150px; height: auto;" %>
+    7        </div> -->
+    8  <STYLE TYPE="text/css">
+    .
+   30  <!-- <div class='formatted'>
+   31     <div class="pics"> -->
+   32:   <%= image_tag "solarinstaller.jpg", style:"max-width: 150px; height: auto;" %>
+   33      <!-- </div> -->
+   34  
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/home.html.erb:
+   54      <div class="banner" style="height=80vw">
+   55          <h1 class="banner-head" >
+   56:             Find a Solar Installer<br>
+   57              Near You
+   58              <p></p>
+   ..
+  143                      <h3 class="information-head">Jaime in Fort Lauderdale</h3>
+  144                      <p>
+  145:                         SunnySide is great! Found a great installer. :)
+  146                      </p>
+  147                  </div>
+
+/Users/Slvr/finalp/sunnyside/app/views/customers/show.html.erb:
+  222    <br>
+  223  
+  224:   <h3>Nearby Solar Installers</h3>
+  225  
+  226    <table class="pure-table pure-table-horizontal">
+
+7 matches across 4 files

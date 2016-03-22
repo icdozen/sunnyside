@@ -7,11 +7,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= include_gon %>
 
 <!-- /*========================this is the new css file for responsive menu===============
 */
  -->
-<div class="custom-menu-wrapper">
+<div class="custom-menu-wrapper"git>
     <div class="pure-menu custom-menu custom-menu-top">
         <a href="/"><img src="/assets/sunnysideLogo_white.png" height="40"></a>
         <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
@@ -22,7 +23,7 @@
             <li class="pure-menu-item"><a href="/customers/1" class="pure-menu-link">Search</a></li>
             <li class="pure-menu-item"><a href="/sessions/new" class="pure-menu-link">Login</a></li>
             <li class="pure-menu-item"><a href="/education" class="pure-menu-link">Why Solar?</a></li>
-            <li class="pure-menu-item"><a href="/service_areas" class="pure-menu-link">For Installers</a></li>
+            <li class="pure-menu-item"><a href="/service_areas" class="pure-menu-link">Solar Data</a></li>
             <li class="pure-menu-item"><a href="/about-us" class="pure-menu-link">About Us</a></li>
 <!--             <li class="pure-menu-item"><a href="/" class="pure-menu-link">GitHub</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
