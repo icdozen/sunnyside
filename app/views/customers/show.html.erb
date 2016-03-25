@@ -1,5 +1,6 @@
 
-<!-- <div id='main'> -->
+<!-- NOTE:  Markers are working, but need to get markersIn variables into the drop function -->
+
 <br>
 <center><h1 style="margin-bottom:0px;">Find Your Contractor</h1></center>
 
@@ -53,23 +54,21 @@
   // consecutively rather than all at once. This example shows how to use
   // window.setTimeout() to space your markers' animation.
 
-  var neighborhoods = [];
 
   var markers = [];
   var map;
 
-  function distCalc(customerIn, contractorsIn) {
+  function distCalc(position, contractorsIn) {
+    var neighborhoods = [];
     for (var i = 0; i < contractorsIn.length; i++) {
-      console.log(contractorsIn[i]);
-      var distLat = Math.abs(customerIn.Lat - contractorsIn[i].Lat);
-      var distLng = Math.abs(customerIn.Lan - contractorsIn[i].Lng);
-      console.log(distLat);
-      console.log(distLng);
+      var distLat = Math.abs(position.lat - contractorsIn[i].Lat);
+      var distLng = Math.abs(position.lng - contractorsIn[i].Lng);
       if (distLat <= 0.37 && distLng <= 0.37) {
         neighborhoods.push({lat: contractorsIn[i].Lat,  lng: contractorsIn[i].Lng});
       }
     }
     console.log(neighborhoods);
+    return neighborhoods;
   }
 
   function initMap() {
@@ -102,7 +101,6 @@
         gon.customer.Lat = pos.lat;
         gon.customer.Lan = pos.lng;
       // };
-      console.log(pos);
 
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
@@ -117,8 +115,10 @@
     // Redo dist calc on button click
     document.getElementById('drop').addEventListener('click', function() {
       geocodeAddress(geocoder, map);
-      distCalc(gon.customer, gon.contractors);
-      drop();
+      console.log("pos:");
+      console.log(pos);
+      markersIn = distCalc(pos, gon.contractors);
+      drop(markersIn);
     });
  
     // drop()
@@ -131,9 +131,6 @@
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         resultsMap.setCenter(results[0].geometry.location);
-
-        console.log(results[0].geometry.location.lat());
-        console.log(results[0].geometry.location.lng());
 
         gon.customer.Lat = results[0].geometry.location.lat();
         gon.customer.Lan = results[0].geometry.location.lng();
@@ -165,24 +162,12 @@
   //   });
   // }
 
-  function drop() {
+  function drop(markersIn) {
     // calcDist();
     // location.reload();
-    deleteMarkers();  
-  	neighborhoods = [];
-  	var latOutput = [];
-  	var lngOutput = [];
-    $(".resultsLat").each(function(){
-    	latOutput.push(parseFloat($(this).html()))
-    });
-    $(".resultsLng").each(function(){
-    	lngOutput.push(parseFloat($(this).html()))
-    });
-    for (var x = 0; x < latOutput.length; x++) {
-    neighborhoods.push({lat: latOutput[x],	lng: lngOutput[x]});
-    }
-    for (var i = 0; i < neighborhoods.length; i++) {
-      addMarkerWithTimeout(neighborhoods[i], i * 200);
+    deleteMarkers();
+    for (var i = 0; i < markersIn.length; i++) {
+      addMarkerWithTimeout(markersIn[i], i * 200);
     }
   }
 
