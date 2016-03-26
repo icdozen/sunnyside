@@ -60,14 +60,24 @@
 
   function distCalc(position, contractorsIn) {
     var neighborhoods = [];
+    window.tableResults = [];
+    console.log("distances: ");
     for (var i = 0; i < contractorsIn.length; i++) {
       var distLat = Math.abs(position.lat - contractorsIn[i].Lat);
       var distLng = Math.abs(position.lng - contractorsIn[i].Lng);
       if (distLat <= 0.37 && distLng <= 0.37) {
         neighborhoods.push({lat: contractorsIn[i].Lat,  lng: contractorsIn[i].Lng});
+        tableResults.push({
+          name: contractorsIn[i].name,
+          address: contractorsIn[i].address,
+          scope: contractorsIn[i].scope,
+          phone: contractorsIn[i].phone,
+          email: contractorsIn[i].email
+        });
+        console.log([distLat,distLng]);
       }
     }
-    console.log(neighborhoods);
+    alert("tableResults need to print to the table below (AJAX): \n\n" + tableResults + "\n\nFirst result is: " + tableResults[0].name);
     return neighborhoods;
   }
 
@@ -81,10 +91,6 @@
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
         window.pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -93,13 +99,8 @@
         // infoWindow.setPosition(pos);
         // infoWindow.setContent('Hi !');
         map.setCenter(pos);
-        drop()
-
-      // function populateField (){
-
-
-        gon.customer.Lat = pos.lat;
-        gon.customer.Lan = pos.lng;
+        markersIn = distCalc(pos, gon.contractors);
+        drop(markersIn);
       // };
 
       }, function() {
@@ -115,13 +116,9 @@
     // Redo dist calc on button click
     document.getElementById('drop').addEventListener('click', function() {
       geocodeAddress(geocoder, map);
-      console.log("pos:");
-      console.log(pos);
       markersIn = distCalc(pos, gon.contractors);
       drop(markersIn);
     });
- 
-    // drop()
   }
 
 //-----------------------
@@ -129,18 +126,16 @@
   function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('latlng').value;
     geocoder.geocode({'address': address}, function(results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        resultsMap.setCenter(results[0].geometry.location);
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
 
-        gon.customer.Lat = results[0].geometry.location.lat();
-        gon.customer.Lan = results[0].geometry.location.lng();
+            pos.lat = results[0].geometry.location.lat();
+            pos.lng = results[0].geometry.location.lng();
 
-      } else {
-        alert('Sorry not able to find you for the following reason: ' + status);
-      }
-    });
-
-
+          } else {
+            alert('Sorry not able to find you for the following reason: ' + status);
+          }
+        });
   }
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -151,16 +146,6 @@
   }
 
 //-------------------------------------------
-
-  // function calcDist() {
-  //   var latsList = $("#contractorLats").html();
-  //   latsList2 = latsList.split(",");
-  //   var output = [];
-  //   console.log(latsList2);
-  //   latsList2.forEach(function(callback, thisArg){
-  //     console.log(thisArg);
-  //   });
-  // }
 
   function drop(markersIn) {
     // calcDist();
@@ -194,11 +179,11 @@
   }
 
 </script>
+
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzULL9NnXulE&callback=initMap">
 </script>
 
-<% results = Customer.searchResults(@customer, @contractors) %>
 
 <center><div id='main'>
   <br>
@@ -214,25 +199,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqe8yyumuH7IeEjNPgHpflzUL
      </thead>
       <tbody>
         <tr>
-        <% results.each do |mapthis| %>
-          <td><a href="/contractors/1"><%= mapthis[:name] %></a></td>
-          <td><a href="tel:561-310-9933"><%= number_to_phone(mapthis[:phone]) %></a></td>
+          <td><a href="/contractors/1"><%= "mapthis[:name]" %></a></td>
+          <td><a href="tel:561-310-9933"><%= "number_to_phone(mapthis[:phone])" %></a></td>
         </tr>
-         <% end %>
   </tbody>
   </table>
-
-  <% search = true %>
-	<% results.each do |mapthis| %>
-
-	  <div class="resultsLat" hidden>
-	    <%= mapthis[:Lat] %>
-	  </div>
-	  <div class="resultsLng" hidden>
-	    <%= mapthis[:Lng] %>
-	  </div>
-	<% end %>
-
 </div></center>
 <br><br>
 
